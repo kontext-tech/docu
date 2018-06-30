@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Kontext.Docu.Core\Kontext.Docu.Core.csproj" />
+    <ProjectReference Include="..\Kontext.Core\Kontext.Core.csproj" />
   </ItemGroup>
 
 </Project>
