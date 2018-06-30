@@ -12,4 +12,16 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Kontext.Configuration\Kontext.Configuration.csproj" />
+    <ProjectReference Include="..\Kontext.Core\Kontext.Core.csproj" />
+    <ProjectReference Include="..\Kontext.Data.Docu\Kontext.Data.Docu.csproj" />
+    <ProjectReference Include="..\Kontext.Data\Kontext.Data.csproj" />
+    <ProjectReference Include="..\Kontext.Security.Docu\Kontext.Security.Docu.csproj" />
+    <ProjectReference Include="..\Kontext.Security\Kontext.Security.csproj" />
+    <ProjectReference Include="..\Kontext.Services.Captcha\Kontext.Services.Captcha.csproj" />
+    <ProjectReference Include="..\Kontext.Services\Kontext.Services.csproj" />
+    <ProjectReference Include="..\Kontext.Utils\Kontext.Utils.csproj" />
+  </ItemGroup>
+
 </Project>
