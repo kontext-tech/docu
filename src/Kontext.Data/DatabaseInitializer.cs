@@ -38,9 +38,9 @@ namespace Kontext.Data
                 await EnsureRoleAsync("Administrator", "Default administrator", applicationPermissionProvider.GetAllPermissionValues());
                 await EnsureRoleAsync("User", "Default user", new string[] { });
 
-                await CreateUserAsync("admin", "Pwd@123!#", "Inbuilt Administrator", "tangf@outlook.com.au", "+61 (03) 0000-0000", new string[] { "Administrator"
+                await CreateUserAsync("admin", "P@ssw0rd", "Inbuilt Administrator", "admin@kontext.tech", "+61 (03) 0000-0000", new string[] { "Administrator"
 });
-                await CreateUserAsync("user", "Pwd@123!#", "Inbuilt Standard User", "no-reply@kosmisch.net", "+61 (03) 0000-0000", new string[] { "User" });
+                await CreateUserAsync("user", "P@ssw0rd", "Inbuilt Standard User", "user@kontext.tech", "+61 (03) 0000-0000", new string[] { "User" });
 
                 await context.SaveChangesAsync();
             }
