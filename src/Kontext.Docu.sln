@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kontext.Data", "Kontext.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kontext.Services", "Kontext.Services\Kontext.Services.csproj", "{4DF0FE80-75A6-404F-9E9F-7E7AC0303ACA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kontext.Services.Captcha", "Kontext.Services.Captcha\Kontext.Services.Captcha.csproj", "{353808FC-C5F3-451F-9508-3FD62BD130A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{4DF0FE80-75A6-404F-9E9F-7E7AC0303ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DF0FE80-75A6-404F-9E9F-7E7AC0303ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DF0FE80-75A6-404F-9E9F-7E7AC0303ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{353808FC-C5F3-451F-9508-3FD62BD130A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{353808FC-C5F3-451F-9508-3FD62BD130A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{353808FC-C5F3-451F-9508-3FD62BD130A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{353808FC-C5F3-451F-9508-3FD62BD130A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{FA832DA5-A540-4355-828A-7C24C9D6B2CE} = {416C5376-BE76-4381-844F-4A3BC3D2627D}
 		{CC4B0B3A-4040-4F28-876D-8A591FAE3B32} = {416C5376-BE76-4381-844F-4A3BC3D2627D}
 		{4DF0FE80-75A6-404F-9E9F-7E7AC0303ACA} = {416C5376-BE76-4381-844F-4A3BC3D2627D}
+		{353808FC-C5F3-451F-9508-3FD62BD130A7} = {416C5376-BE76-4381-844F-4A3BC3D2627D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA0A90E9-BD08-4123-9675-BFAC4D2080FC}
