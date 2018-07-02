@@ -1,0 +1,15 @@
+﻿@using Kontext.Services;
+@inject IConfigService ConfigService
+@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment env
+<footer class="text-center p-2">
+    <hr />
+    <div>
+        &copy; @DateTime.Now.Year  @ConfigService.SiteConfig.SiteName
+        <a asp-action="PrivacyPolicy" asp-area="" asp-controller="Home" class="text-muted">@SharedLocalizer["Cookie and Privacy policy"]</a><br />
+    </div>
+
+    <div class="text-muted small">
+        Environment: @env.EnvironmentName | Kontext @ConfigService.SiteConfig.AppVersion
+    </div>
+    <div class="small">Made with <i class="fa fa-heart text-danger"></i> in Melbourne.</div>
+</footer>

@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
+        .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
+    var showOnlyCurrentLanguageCookie = Context.Request.Cookies[Constants.CookieNameForComponentLanguageFilter];
+
+    var noAutoDropDown = ViewData["NoAutoDropDown"] != null;
+
+}
+@if (noAutoDropDown)
+{
+    <div class="btn-group dropup">
+        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+            <i class="fa fa-language"></i>  @SharedLocalizer[requestCulture.RequestCulture.UICulture.NativeName]
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-header">@SharedLocalizer["Select display language"] </div>
+            @foreach (var culture in cultureItems)
+            {
+                <a class="dropdown-item" asp-area="" asp-action="SetLanguage" asp-controller="Home" asp-route-culture="@culture.Value" asp-route-page="" asp-route-returnUrl="@returnUrl">@culture.Text  <i class="fa @(requestCulture.RequestCulture.UICulture.Name.Equals(culture.Value) ? "fa-check-circle text-success" : "") "></i></a>
+
+            }
+        </div>
+    </div>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item dropdown dropdown-hover">
+            <a class="nav-link dropdown-toggle" id="dropdownMenuLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-language"></i>  @SharedLocalizer[requestCulture.RequestCulture.UICulture.NativeName] <i class="fa fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLanguages">
+                <div class="dropdown-header">@SharedLocalizer["Select display language"] </div>
+                @foreach (var culture in cultureItems)
+                {
+                    <a class="dropdown-item" asp-area="" asp-action="SetLanguage" asp-controller="Home" asp-route-culture="@culture.Value" asp-route-page="" asp-route-returnUrl="@returnUrl">@culture.Text  <i class="fa @(requestCulture.RequestCulture.UICulture.Name.Equals(culture.Value) ? "fa-check-circle text-success" : "") "></i></a>
+
+                }
+            </div>
+        </li>
+    </ul>
+}

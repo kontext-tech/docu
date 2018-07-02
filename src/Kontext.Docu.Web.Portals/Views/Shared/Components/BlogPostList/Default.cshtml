@@ -1,0 +1,15 @@
+﻿@model IEnumerable<BlogPost>
+@inject IConfigService ConfigService
+@{
+    Layout = null;
+}
+<!--List of blogs-->
+<div class="d-flex row justify-content-sm-center">
+    @foreach (var post in Model)
+    {
+
+        <div class="col-sm-5 mr-sm-1 mb-sm-1 flex-md-row mb-4 box-shadow h-md-250">
+            @await Html.PartialAsync("_BlogPostDetailPartial", post)
+        </div>
+    }
+</div>

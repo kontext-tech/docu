@@ -1,0 +1,1155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Active" xml:space="preserve">
+    <value>是否有效</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="CategoryId" xml:space="preserve">
+    <value>分类编号</value>
+  </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>分类名称</value>
+  </data>
+  <data name="ChildCategories" xml:space="preserve">
+    <value>子分类</value>
+  </data>
+  <data name="Component" xml:space="preserve">
+    <value>课程</value>
+  </data>
+  <data name="ComponentId" xml:space="preserve">
+    <value>课程编号</value>
+  </data>
+  <data name="ComponentItem" xml:space="preserve">
+    <value>课程项</value>
+  </data>
+  <data name="ComponentItemId" xml:space="preserve">
+    <value>课程项编号</value>
+  </data>
+  <data name="ComponentItems" xml:space="preserve">
+    <value>课程项</value>
+  </data>
+  <data name="ComponentName" xml:space="preserve">
+    <value>课程名称</value>
+  </data>
+  <data name="Components" xml:space="preserve">
+    <value>课程</value>
+  </data>
+  <data name="ComponentVersion" xml:space="preserve">
+    <value>课程版本</value>
+  </data>
+  <data name="ComponentVersionId" xml:space="preserve">
+    <value>课程版本编号</value>
+  </data>
+  <data name="ComponentVersions" xml:space="preserve">
+    <value>课程版本</value>
+  </data>
+  <data name="DateCreated" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="DateModified" xml:space="preserve">
+    <value>修改日期</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="DifficultyLevel" xml:space="preserve">
+    <value>难易程度</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>电子邮箱</value>
+  </data>
+  <data name="EstimatedDurationMins" xml:space="preserve">
+    <value>估计时长(分钟)</value>
+  </data>
+  <data name="ImageUrl" xml:space="preserve">
+    <value>图片地址</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>索引</value>
+  </data>
+  <data name="IsInternal" xml:space="preserve">
+    <value>是否是内部</value>
+  </data>
+  <data name="ItemId" xml:space="preserve">
+    <value>课程项编号</value>
+  </data>
+  <data name="ParentCategory" xml:space="preserve">
+    <value>父类</value>
+  </data>
+  <data name="ParentCategoryId" xml:space="preserve">
+    <value>上级分类编号</value>
+  </data>
+  <data name="Reference" xml:space="preserve">
+    <value>参考</value>
+  </data>
+  <data name="ReferenceId" xml:space="preserve">
+    <value>参考编号</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="Url" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="VersionName" xml:space="preserve">
+    <value>版本名称</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>显示名称</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="&lt;strong&gt;Request ID:&lt;/strong&gt;" xml:space="preserve">
+    <value>请求编号：</value>
+  </data>
+  <data name="A new online learning experience created by IT professionals for ALL!" xml:space="preserve">
+    <value>IT专业人士为所有人打造的新的在线学习体验！</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Access denied" xml:space="preserve">
+    <value>无权访问</value>
+  </data>
+  <data name="All rights reserved." xml:space="preserve">
+    <value>保留所有权利.</value>
+  </data>
+  <data name="An error occurred while processing your request. Please try again later." xml:space="preserve">
+    <value>处理当前请求时发生了错误，请稍后尝试！</value>
+  </data>
+  <data name="BI" xml:space="preserve">
+    <value>商业智能</value>
+  </data>
+  <data name="Change password" xml:space="preserve">
+    <value>更改密码</value>
+  </data>
+  <data name="Confirm email" xml:space="preserve">
+    <value>确认邮箱</value>
+  </data>
+  <data name="Confirm password" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="Congratulations, your account is now activated." xml:space="preserve">
+    <value>恭喜您，您的账号已经激活。</value>
+  </data>
+  <data name="Create a new account." xml:space="preserve">
+    <value>创建新账号。</value>
+  </data>
+  <data name="Database" xml:space="preserve">
+    <value>数据库</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>英文</value>
+  </data>
+  <data name="Enter your email." xml:space="preserve">
+    <value>输入您的邮箱。</value>
+  </data>
+  <data name="Error." xml:space="preserve">
+    <value>发生了错误。</value>
+  </data>
+  <data name="Forgot password confirmation" xml:space="preserve">
+    <value>忘记密码确认</value>
+  </data>
+  <data name="Forgot your password?" xml:space="preserve">
+    <value>忘记了密码？</value>
+  </data>
+  <data name="Frameworks" xml:space="preserve">
+    <value>框架</value>
+  </data>
+  <data name="Home Page" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="Join now" xml:space="preserve">
+    <value>马上注册</value>
+  </data>
+  <data name="Kontext &lt;span class=&quot;text-success&quot;&gt;Learning&lt;/span&gt;" xml:space="preserve">
+    <value>Kontext &lt;span class="text-success"&gt;学习&lt;/span&gt;</value>
+  </data>
+  <data name="Kontext Learning" xml:space="preserve">
+    <value>Kontext 在线学习平台</value>
+  </data>
+  <data name="last modified" xml:space="preserve">
+    <value>最近修改</value>
+  </data>
+  <data name="Latest tutorials" xml:space="preserve">
+    <value>最新课程</value>
+  </data>
+  <data name="Locked out" xml:space="preserve">
+    <value>账号已被锁定</value>
+  </data>
+  <data name="Log in" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="Log out" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="Password reset link has been sent to your email. Please check your email to reset your password." xml:space="preserve">
+    <value>密码重置的链接已经发送到您的邮箱。请登录您的邮箱以重置密码。</value>
+  </data>
+  <data name="Cookie and Privacy policy" xml:space="preserve">
+    <value>Cookie以及隐私政策</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>个人资料</value>
+  </data>
+  <data name="Programming" xml:space="preserve">
+    <value>编程语言</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="Remember me?" xml:space="preserve">
+    <value>记住我？</value>
+  </data>
+  <data name="Select language" xml:space="preserve">
+    <value>选择语言</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>提交</value>
+  </data>
+  <data name="This account has been locked out, please try again later." xml:space="preserve">
+    <value>此账号已被锁定， 请稍后再尝试。</value>
+  </data>
+  <data name="Tools &amp; SDLC" xml:space="preserve">
+    <value>工具与流程</value>
+  </data>
+  <data name="Tutorial" xml:space="preserve">
+    <value>课程</value>
+  </data>
+  <data name="Tutorial Categories" xml:space="preserve">
+    <value>课程分类</value>
+  </data>
+  <data name="versions" xml:space="preserve">
+    <value>个版本</value>
+  </data>
+  <data name="You do not have access to this resource." xml:space="preserve">
+    <value>您无权访问此页面。</value>
+  </data>
+  <data name="简体中文" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="Confirm new password" xml:space="preserve">
+    <value>确认新密码</value>
+  </data>
+  <data name="Current password" xml:space="preserve">
+    <value>当前密码</value>
+  </data>
+  <data name="Email address is not valid." xml:space="preserve">
+    <value>请输入正确的电子邮箱</value>
+  </data>
+  <data name="Full name" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="New password" xml:space="preserve">
+    <value>新密码</value>
+  </data>
+  <data name="Phone number" xml:space="preserve">
+    <value>电话号码</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="Reset password" xml:space="preserve">
+    <value>重置密码</value>
+  </data>
+  <data name="Reset password confirmation" xml:space="preserve">
+    <value>重置密码确认</value>
+  </data>
+  <data name="Reset your password." xml:space="preserve">
+    <value>重置您的密码</value>
+  </data>
+  <data name="Send verification email" xml:space="preserve">
+    <value>发送验证邮件</value>
+  </data>
+  <data name="Signed out" xml:space="preserve">
+    <value>已登出</value>
+  </data>
+  <data name="The password and confirmation password do not match." xml:space="preserve">
+    <value>密码和确认密码不一致</value>
+  </data>
+  <data name="The {0} field is required." xml:space="preserve">
+    <value>{0}为必填字段。</value>
+  </data>
+  <data name="The {0} must be at least {2} and at max {1} characters long." xml:space="preserve">
+    <value> {0} 长度必须介于  {2}  与  {1} 之间</value>
+  </data>
+  <data name="Update password" xml:space="preserve">
+    <value>更改密码</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="Verification Code" xml:space="preserve">
+    <value>验证码</value>
+  </data>
+  <data name="You have successfully signed out." xml:space="preserve">
+    <value>您已经成功登出！</value>
+  </data>
+  <data name="Your password has been reset. Please click the login button to log in." xml:space="preserve">
+    <value>您的密码已重置成功， 请点击登录按钮登录。</value>
+  </data>
+  <data name="A code must be supplied for password reset." xml:space="preserve">
+    <value>重置密码代码未提供。</value>
+  </data>
+  <data name="All languages" xml:space="preserve">
+    <value>所有语言</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="Invalid login attempt." xml:space="preserve">
+    <value>用户名或密码错误。</value>
+  </data>
+  <data name="Maximum {0} characters allowed." xml:space="preserve">
+    <value>长度必须小于{0}</value>
+  </data>
+  <data name="No pages under this tutorial." xml:space="preserve">
+    <value>此教程下暂无内容，敬请期待。</value>
+  </data>
+  <data name="No tutorials under this category." xml:space="preserve">
+    <value>此分类下暂无教程，敬请期待。</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>课程导航</value>
+  </data>
+  <data name="Select display language" xml:space="preserve">
+    <value>选择界面语言</value>
+  </data>
+  <data name="This component is not available in language {0}." xml:space="preserve">
+    <value>此教程不具有  {0} 语言的版本。</value>
+  </data>
+  <data name="Tutorial language filter" xml:space="preserve">
+    <value>课程语言设置</value>
+  </data>
+  <data name="Tutorials" xml:space="preserve">
+    <value>教程</value>
+  </data>
+  <data name="Unable to load user with ID {0}." xml:space="preserve">
+    <value>找不到用户ID  {0}。</value>
+  </data>
+  <data name="User is not enabled or activated." xml:space="preserve">
+    <value>用户未激活或暂停使用。</value>
+  </data>
+  <data name="Verification code is invalid." xml:space="preserve">
+    <value>验证码不正确。</value>
+  </data>
+  <data name="Verification email sent. Please check your email." xml:space="preserve">
+    <value>验证邮件以及发送，请检查您的邮箱。</value>
+  </data>
+  <data name="View detail" xml:space="preserve">
+    <value>查看详情</value>
+  </data>
+  <data name="Your password has been changed." xml:space="preserve">
+    <value>您的密码修改成功。</value>
+  </data>
+  <data name="Your password has been set." xml:space="preserve">
+    <value>您的密码设置成功。</value>
+  </data>
+  <data name="Your profile has been updated" xml:space="preserve">
+    <value>您的用户资料更新成功</value>
+  </data>
+  <data name="{0} mins to read" xml:space="preserve">
+    <value>估计需{0}分钟完成阅读</value>
+  </data>
+  <data name="{0} only" xml:space="preserve">
+    <value>仅 {0}</value>
+  </data>
+  <data name="{0} pages" xml:space="preserve">
+    <value>{0} 页</value>
+  </data>
+  <data name="UniqueName" xml:space="preserve">
+    <value>URL名称</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>审核通过？</value>
+  </data>
+  <data name="CommentId" xml:space="preserve">
+    <value>评论编号</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="DateDeleted" xml:space="preserve">
+    <value>删除日期</value>
+  </data>
+  <data name="IpAddress" xml:space="preserve">
+    <value>IP地址</value>
+  </data>
+  <data name="IsDeleted" xml:space="preserve">
+    <value>已删除？</value>
+  </data>
+  <data name="ReplyToComment" xml:space="preserve">
+    <value>回复评论</value>
+  </data>
+  <data name="ReplyToCommentId" xml:space="preserve">
+    <value>回复评论编号</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="UserAgent" xml:space="preserve">
+    <value>浏览器信息</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>用户编号</value>
+  </data>
+  <data name="Add comment" xml:space="preserve">
+    <value>添加评论</value>
+  </data>
+  <data name="Add comment failed!" xml:space="preserve">
+    <value>评论添加失败！</value>
+  </data>
+  <data name="Add comment succeed!" xml:space="preserve">
+    <value>添加评论成功！</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Comment is added successfully!" xml:space="preserve">
+    <value>评论已成功添加！</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>错误提示：</value>
+  </data>
+  <data name="Invalid model state." xml:space="preserve">
+    <value>无效的请求。</value>
+  </data>
+  <data name="New user?" xml:space="preserve">
+    <value>新用户？</value>
+  </data>
+  <data name="No comments available." xml:space="preserve">
+    <value>暂无评论。</value>
+  </data>
+  <data name="Please login first to add comments." xml:space="preserve">
+    <value>请先登录后添加评论。</value>
+  </data>
+  <data name="Re:" xml:space="preserve">
+    <value>回复:</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Your comment will show up once the page is refreshed." xml:space="preserve">
+    <value>页面刷新后评论即会显示。</value>
+  </data>
+  <data name="Action in progress..." xml:space="preserve">
+    <value>操作正在进行中...</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="MimeType" xml:space="preserve">
+    <value>MIME 类型</value>
+  </data>
+  <data name="Please select one file." xml:space="preserve">
+    <value>请选择一个文件。</value>
+  </data>
+  <data name="Please wait" xml:space="preserve">
+    <value>请稍等</value>
+  </data>
+  <data name="My comments" xml:space="preserve">
+    <value>我的评论</value>
+  </data>
+  <data name="No comments." xml:space="preserve">
+    <value>暂无评论。</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="Versions_U" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="Data Sciences" xml:space="preserve">
+    <value>数据科学</value>
+  </data>
+  <data name="and consent to our Cookie Policy and" xml:space="preserve">
+    <value>并且授权Kontext的Cookie政策以及</value>
+  </data>
+  <data name="By registering an account, you agree to" xml:space="preserve">
+    <value>注册前，需同意本站的</value>
+  </data>
+  <data name="Job" xml:space="preserve">
+    <value>工作</value>
+  </data>
+  <data name="Kontext &lt;span class=&quot;text-primary&quot;&gt;Job&lt;/span&gt;" xml:space="preserve">
+    <value>Kontext &lt;span class="text-primary"&gt;工作&lt;/span&gt;</value>
+  </data>
+  <data name="Kontext Job" xml:space="preserve">
+    <value>Kontext 工作</value>
+  </data>
+  <data name="Terms of Service" xml:space="preserve">
+    <value>使用条款</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Phone number is not valid." xml:space="preserve">
+    <value>电话号码格式不正确。</value>
+  </data>
+  <data name="URL is not valid." xml:space="preserve">
+    <value>网页地址格式不正确。</value>
+  </data>
+  <data name="Application permissions" xml:space="preserve">
+    <value>系统权限列表</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>组</value>
+  </data>
+  <data name="Has Permission?" xml:space="preserve">
+    <value>是否有权限？</value>
+  </data>
+  <data name="Identity admin home" xml:space="preserve">
+    <value>Identity 管理</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="Welcome to Identity admin home page to manage users and roles." xml:space="preserve">
+    <value>欢迎来到系统用户与角色权限管理界面。</value>
+  </data>
+  <data name="Add role" xml:space="preserve">
+    <value>添加角色</value>
+  </data>
+  <data name="Add user" xml:space="preserve">
+    <value>添加用户</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>修改</value>
+  </data>
+  <data name="Edit role" xml:space="preserve">
+    <value>修改角色</value>
+  </data>
+  <data name="Edit user" xml:space="preserve">
+    <value>修改用户</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>全名</value>
+  </data>
+  <data name="Manage roles" xml:space="preserve">
+    <value>角色管理</value>
+  </data>
+  <data name="Manage users" xml:space="preserve">
+    <value>用户管理</value>
+  </data>
+  <data name="Permission Count" xml:space="preserve">
+    <value>权限种类</value>
+  </data>
+  <data name="Permissions" xml:space="preserve">
+    <value>权限</value>
+  </data>
+  <data name="Role Count" xml:space="preserve">
+    <value>角色数量</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>角色</value>
+  </data>
+  <data name="Roles cannot be empty." xml:space="preserve">
+    <value>用户应至少属于一个角色。</value>
+  </data>
+  <data name="Search user" xml:space="preserve">
+    <value>搜索用户</value>
+  </data>
+  <data name="User Count" xml:space="preserve">
+    <value>用户数量</value>
+  </data>
+  <data name="You are not allowed to modify your roles by policy." xml:space="preserve">
+    <value>不能修改自己的角色。</value>
+  </data>
+  <data name="False" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="IsEnabled" xml:space="preserve">
+    <value>是否可用？</value>
+  </data>
+  <data name="IsLockedOut" xml:space="preserve">
+    <value>锁定？</value>
+  </data>
+  <data name="True" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Add location" xml:space="preserve">
+    <value>添加地址</value>
+  </data>
+  <data name="Back to list" xml:space="preserve">
+    <value>返回列表</value>
+  </data>
+  <data name="Job admin home" xml:space="preserve">
+    <value>Job 管理</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>层级</value>
+  </data>
+  <data name="LocationCode" xml:space="preserve">
+    <value>代码</value>
+  </data>
+  <data name="Manage locations" xml:space="preserve">
+    <value>地址管理</value>
+  </data>
+  <data name="ParentLocation" xml:space="preserve">
+    <value>上级地址</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="Welcome to Job admin home page to manage jobs and related." xml:space="preserve">
+    <value>欢迎来到 Job 管理界面。</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>详情</value>
+  </data>
+  <data name="Edit location" xml:space="preserve">
+    <value>编辑地址</value>
+  </data>
+  <data name="ParentLocationCode" xml:space="preserve">
+    <value>上级地址代码</value>
+  </data>
+  <data name="SubLocations" xml:space="preserve">
+    <value>下级地址</value>
+  </data>
+  <data name="SysDateCreatedUtc" xml:space="preserve">
+    <value>创建时间 (UTC)</value>
+  </data>
+  <data name="SysDateDeletedUtc" xml:space="preserve">
+    <value>删除时间 (UTC)</value>
+  </data>
+  <data name="SysDateModifiedUtc" xml:space="preserve">
+    <value>修改时间 (UTC)</value>
+  </data>
+  <data name="SysIsDeleted" xml:space="preserve">
+    <value>是否删除？</value>
+  </data>
+  <data name="SysIsEffective" xml:space="preserve">
+    <value>是否有效？</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>市</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>国家</value>
+  </data>
+  <data name="County" xml:space="preserve">
+    <value>县</value>
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>区</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>其它</value>
+  </data>
+  <data name="Province" xml:space="preserve">
+    <value>省</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>州</value>
+  </data>
+  <data name="Suburb" xml:space="preserve">
+    <value>郊区</value>
+  </data>
+  <data name="NotSpecified" xml:space="preserve">
+    <value>未提供</value>
+  </data>
+  <data name="EducationTypes" xml:space="preserve">
+    <value>教育水平</value>
+  </data>
+  <data name="Enum Localized Name" xml:space="preserve">
+    <value>本地化名称</value>
+  </data>
+  <data name="Enum Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="Enum Value" xml:space="preserve">
+    <value>数值</value>
+  </data>
+  <data name="JobPublisherTypes" xml:space="preserve">
+    <value>发布者类别</value>
+  </data>
+  <data name="JobTypes" xml:space="preserve">
+    <value>工作种类</value>
+  </data>
+  <data name="LanguageTypes" xml:space="preserve">
+    <value>语言种类</value>
+  </data>
+  <data name="LocationTypes" xml:space="preserve">
+    <value>地址种类</value>
+  </data>
+  <data name="SalaryFrequency" xml:space="preserve">
+    <value>工资频率</value>
+  </data>
+  <data name="View master data" xml:space="preserve">
+    <value>查看基元数据</value>
+  </data>
+  <data name="WorkingExperienceRanges" xml:space="preserve">
+    <value>工作经验</value>
+  </data>
+  <data name="WorkingPermissionTypes" xml:space="preserve">
+    <value>签证要求</value>
+  </data>
+  <data name="Add job category" xml:space="preserve">
+    <value>添加工作分类</value>
+  </data>
+  <data name="CategoryCode" xml:space="preserve">
+    <value>分类编码</value>
+  </data>
+  <data name="Edit job category" xml:space="preserve">
+    <value>编辑工作分类</value>
+  </data>
+  <data name="Job category details" xml:space="preserve">
+    <value>工作分类详情</value>
+  </data>
+  <data name="Job category list" xml:space="preserve">
+    <value>工作分类列表</value>
+  </data>
+  <data name="Job list" xml:space="preserve">
+    <value>工作列表</value>
+  </data>
+  <data name="Manage job categories" xml:space="preserve">
+    <value>工作分类管理</value>
+  </data>
+  <data name="Manage jobs" xml:space="preserve">
+    <value>工作管理</value>
+  </data>
+  <data name="ResourceName" xml:space="preserve">
+    <value>本地化资源名称</value>
+  </data>
+  <data name="Add job" xml:space="preserve">
+    <value>添加工作</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>公司名称</value>
+  </data>
+  <data name="ContactEmail" xml:space="preserve">
+    <value>电子邮件</value>
+  </data>
+  <data name="ContactPhone" xml:space="preserve">
+    <value>电话</value>
+  </data>
+  <data name="ContactUrl" xml:space="preserve">
+    <value>网址</value>
+  </data>
+  <data name="ContactWechat" xml:space="preserve">
+    <value>微信</value>
+  </data>
+  <data name="DatePublishedUtc" xml:space="preserve">
+    <value>发布日期 (UTC)</value>
+  </data>
+  <data name="EducationContext" xml:space="preserve">
+    <value>教育水平需求</value>
+  </data>
+  <data name="IsClosed" xml:space="preserve">
+    <value>是否关闭</value>
+  </data>
+  <data name="IsVerified" xml:space="preserve">
+    <value>是否已验证</value>
+  </data>
+  <data name="JobId" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="JobPublisherType" xml:space="preserve">
+    <value>发布人类型</value>
+  </data>
+  <data name="JobStats" xml:space="preserve">
+    <value>统计信息</value>
+  </data>
+  <data name="JobTypeContext" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="LanguageCode" xml:space="preserve">
+    <value>语言代码</value>
+  </data>
+  <data name="LanguageContext" xml:space="preserve">
+    <value>语言需求</value>
+  </data>
+  <data name="Locations" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="Please select at least one location." xml:space="preserve">
+    <value>请选择至少一个地址。</value>
+  </data>
+  <data name="PublishedByUserId" xml:space="preserve">
+    <value>发布人ID</value>
+  </data>
+  <data name="SalaryAmount" xml:space="preserve">
+    <value>工资</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>来源</value>
+  </data>
+  <data name="WorkingExperienceContext" xml:space="preserve">
+    <value>工作经验需求</value>
+  </data>
+  <data name="WorkingPermissionContext" xml:space="preserve">
+    <value>身份需求</value>
+  </data>
+  <data name="Edit job" xml:space="preserve">
+    <value>编辑工作</value>
+  </data>
+  <data name="Job details" xml:space="preserve">
+    <value>工作详情</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="Blogs" xml:space="preserve">
+    <value>博客列表</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>联系方式</value>
+  </data>
+  <data name="Hottest posts" xml:space="preserve">
+    <value>热门文章</value>
+  </data>
+  <data name="In this page" xml:space="preserve">
+    <value>页面导航</value>
+  </data>
+  <data name="Latest comments" xml:space="preserve">
+    <value>最新评论</value>
+  </data>
+  <data name="Latest posts" xml:space="preserve">
+    <value>最新文章</value>
+  </data>
+  <data name="Learn more" xml:space="preserve">
+    <value>了解更多</value>
+  </data>
+  <data name="Stats" xml:space="preserve">
+    <value>访问统计</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>订阅</value>
+  </data>
+  <data name="Tags cloud" xml:space="preserve">
+    <value>标签云</value>
+  </data>
+  <data name="Toolbar" xml:space="preserve">
+    <value>工具栏</value>
+  </data>
+  <data name="views_l" xml:space="preserve">
+    <value>次阅读</value>
+  </data>
+  <data name="{0} comments" xml:space="preserve">
+    <value>{0} 条评论</value>
+  </data>
+  <data name="{0} views" xml:space="preserve">
+    <value>{0} 次阅读</value>
+  </data>
+  <data name="Captch code cannot be empty." xml:space="preserve">
+    <value>验证码不能为空。</value>
+  </data>
+  <data name="Captch code is incorrect." xml:space="preserve">
+    <value>验证码错误，请重新输入。</value>
+  </data>
+  <data name="Captcha" xml:space="preserve">
+    <value>验证码 (填写等式答案)</value>
+  </data>
+  <data name="Captcha code is expired, please refresh the code." xml:space="preserve">
+    <value>验证码已失效，请刷新验证码。</value>
+  </data>
+  <data name="EmailConfirmed" xml:space="preserve">
+    <value>邮箱已验证？</value>
+  </data>
+  <data name="Refresh Captcha" xml:space="preserve">
+    <value>刷新验证码</value>
+  </data>
+  <data name="User detail" xml:space="preserve">
+    <value>用户信息</value>
+  </data>
+  <data name="A confirmation message has been sent to your email; please verify your email address from that email before you can login." xml:space="preserve">
+    <value>请登录您的邮箱，验证邮件后即可登录完成注册。</value>
+  </data>
+  <data name="Register confirmation" xml:space="preserve">
+    <value>注册确认</value>
+  </data>
+  <data name="Add blog" xml:space="preserve">
+    <value>添加博客</value>
+  </data>
+  <data name="Add blog category" xml:space="preserve">
+    <value>添加博客分类</value>
+  </data>
+  <data name="Add blog post" xml:space="preserve">
+    <value>添加博客文章</value>
+  </data>
+  <data name="Blog category details" xml:space="preserve">
+    <value>博客分类信息</value>
+  </data>
+  <data name="Blog comment details" xml:space="preserve">
+    <value>博客评论信息</value>
+  </data>
+  <data name="Blog details" xml:space="preserve">
+    <value>博客信息</value>
+  </data>
+  <data name="Blog post details" xml:space="preserve">
+    <value>博客文章信息</value>
+  </data>
+  <data name="Create blog" xml:space="preserve">
+    <value>创建博客</value>
+  </data>
+  <data name="Create blog category" xml:space="preserve">
+    <value>创建博客分类</value>
+  </data>
+  <data name="Create blog post" xml:space="preserve">
+    <value>创建博客文章</value>
+  </data>
+  <data name="Edit blog" xml:space="preserve">
+    <value>编辑博客</value>
+  </data>
+  <data name="Edit blog category" xml:space="preserve">
+    <value>编辑博客分类</value>
+  </data>
+  <data name="Edit blog comment" xml:space="preserve">
+    <value>编辑博客评论</value>
+  </data>
+  <data name="Edit blog post" xml:space="preserve">
+    <value>编辑博客文章</value>
+  </data>
+  <data name="Manage blog categories" xml:space="preserve">
+    <value>博客分类管理</value>
+  </data>
+  <data name="Manage blog comments" xml:space="preserve">
+    <value>博客评论管理</value>
+  </data>
+  <data name="Manage blog posts" xml:space="preserve">
+    <value>博客文章管理</value>
+  </data>
+  <data name="Manage blogs" xml:space="preserve">
+    <value>博客管理</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>用户</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="Email details" xml:space="preserve">
+    <value>邮件详情</value>
+  </data>
+  <data name="Manage emails" xml:space="preserve">
+    <value>邮件管理</value>
+  </data>
+  <data name="Please check junk mailbox if you have not received the activation email in your inbox. You will need to click registration link in the email to finish your registration." xml:space="preserve">
+    <value>如果您没有收到激活邮件，请检查您的邮箱文件夹。它可能在“垃圾邮件”、“废纸篓”、“已删除邮件”或“归档”文件夹中。您需要点击激活链接完成注册后方可登录。</value>
+  </data>
+  <data name="Create tag" xml:space="preserve">
+    <value>添加标签</value>
+  </data>
+  <data name="Manage tags" xml:space="preserve">
+    <value>标签管理</value>
+  </data>
+  <data name="Edit tag" xml:space="preserve">
+    <value>编辑标签</value>
+  </data>
+  <data name="Rebuild NTile" xml:space="preserve">
+    <value>重建标签NTile</value>
+  </data>
+  <data name="Tag details" xml:space="preserve">
+    <value>标签详情</value>
+  </data>
+  <data name="Docs" xml:space="preserve">
+    <value>文档</value>
+  </data>
+  <data name="Merge" xml:space="preserve">
+    <value>合并</value>
+  </data>
+  <data name="Merge blog category" xml:space="preserve">
+    <value>合并博客分类</value>
+  </data>
+  <data name="To Category" xml:space="preserve">
+    <value>合并到分类</value>
+  </data>
+  <data name="Manage cache" xml:space="preserve">
+    <value>缓存管理</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="Related pages" xml:space="preserve">
+    <value>相关文章</value>
+  </data>
+  <data name="AgreeWithPrivacyPolicy" xml:space="preserve">
+    <value>同意隐私政策</value>
+  </data>
+  <data name="You need to agree to our Cookie and privacy policy to proceed." xml:space="preserve">
+    <value>操作前，您需接受此网站的Cookie以及隐私政策。</value>
+  </data>
+  <data name="By adding a comment, you agree to" xml:space="preserve">
+    <value>添加评论前，您需同意本站的</value>
+  </data>
+  <data name="Reply" xml:space="preserve">
+    <value>回复</value>
+  </data>
+  <data name="Dismiss" xml:space="preserve">
+    <value>隐藏</value>
+  </data>
+  <data name="Read here about Kontext's" xml:space="preserve">
+    <value>点击这里查看Kontext </value>
+  </data>
+  <data name="View docs" xml:space="preserve">
+    <value>查看文章</value>
+  </data>
+  <data name="{0} posts" xml:space="preserve">
+    <value>{0} 篇文章</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="Comment is marked as deleted successfully!" xml:space="preserve">
+    <value>评论被成功标记为删除！</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="Error: Action failed! Please contact system administrator if this happens again." xml:space="preserve">
+    <value>错误提示：操作失败！如果此错误再次发生，请联系系统管理员。</value>
+  </data>
+  <data name="The comment has been deleted." xml:space="preserve">
+    <value>此评论已被删除！</value>
+  </data>
+  <data name="Delete personal data" xml:space="preserve">
+    <value>删除个人数据</value>
+  </data>
+  <data name="Download personal data" xml:space="preserve">
+    <value>下载个人数据</value>
+  </data>
+  <data name="Error: Please contact system administrtor!" xml:space="preserve">
+    <value>错误：用户停用失败，请联系系统管理员！</value>
+  </data>
+  <data name="User account is deactivated successfully!" xml:space="preserve">
+    <value>用户停用成功！</value>
+  </data>
+  <data name="Account is already disabled!" xml:space="preserve">
+    <value>用户已被停用！</value>
+  </data>
+  <data name="Allow Cookies and Dismiss" xml:space="preserve">
+    <value>接受Cookie并隐藏</value>
+  </data>
+  <data name="Analytics &amp; BI" xml:space="preserve">
+    <value>数据分析&amp;BI</value>
+  </data>
+  <data name="Tools &amp; Open Source" xml:space="preserve">
+    <value>工具&amp;开源项目</value>
+  </data>
+</root>

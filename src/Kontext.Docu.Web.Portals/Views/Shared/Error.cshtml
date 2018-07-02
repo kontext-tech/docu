@@ -1,0 +1,16 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+    Layout = "_LayoutNarrow";
+}
+
+<div class="jumbotron mt-2">
+    <h2 class="text-danger"><i class="fa fa-remove"></i> Error.</h2>
+    <h3 class="lead text-danger">An error occurred while processing your request. Please try again later.</h3>
+    @if (Model.ShowRequestId)
+    {
+        <p>
+            <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        </p>
+    }
+</div>

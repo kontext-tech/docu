@@ -1,0 +1,194 @@
+﻿@model BlogPost
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery af
+@{
+    ViewData["Title"] = Model.Title + " - " + Model.Blog.Title;
+    if (!String.IsNullOrWhiteSpace(Model.KeyWords))
+    {
+        ViewData[Constants.PageKeywordsViewDataKey] = Model.KeyWords;
+    }
+    else if (Model.Tags != null && Model.Tags.Count > 0)
+    {
+        ViewData[Constants.PageKeywordsViewDataKey] = String.Join(" ,", Model.Tags.Select(t => t.Tag.TagName));
+    }
+
+    if (!String.IsNullOrWhiteSpace(Model.Description))
+    {
+        ViewData[Constants.PageDescriptionViewDataKey] = Model.Description.ToPageDescription().Trim();
+    }
+    else
+    {
+        var desc = Model.Text.ToPageDescription().Trim();
+        if (!string.IsNullOrWhiteSpace(desc))
+        {
+            ViewData[Constants.PageDescriptionViewDataKey] = desc;
+        }
+    }
+    ViewData.AddActiveCategory(Model.Blog.UniqueName);
+}
+<div class="jumbotron rounded-0 mb-0 bg-dark text-light">
+    <h1><a class="text-light" asp-area="BlogArea" asp-action="Index" asp-controller="BlogPost" asp-route-blogName="@Model.Blog.UniqueName" asp-route-postName="@Model.UniqueName" asp-route-year="@Model.DatePublished.Value.Year" asp-route-month="@Model.DatePublished.Value.Month" asp-route-day="@Model.DatePublished.Value.Day">@Html.Raw(Model.Title) </a></h1>
+    <div class="lead">
+        <h6 class="small mb-2 text-muted">
+            <i class="fa fa-eye"></i> <span id="viewCount" data-update-url="@Url.Action("UpdateViewCountAsync", "BlogPost", new { area = "BlogArea", blogPostId = Model.BlogPostId })" data-tn-selector="#refreshViewCountRequestTokenName" data-tnv-selector="#refreshViewCountRequestToken">@Model.ViewCount</span> @SharedLocalizer["views_l"] <i class="fa fa-comments"></i> <a href="#commentArea" class="text-light">@string.Format(SharedHtmlLocalizer["{0} comments"].Value, @Model.CommentCount)</a> <i class="fa fa-calendar"></i> @SharedLocalizer["last modified"] @Model.DatePublished.Value.ToTimeAgo() <i class="fa fa-user-circle"></i> @Model.Author
+        </h6>
+        <input hidden readonly id="refreshViewCountRequestToken" value="@af.GetTokens(this.Context).RequestToken" />
+        <input hidden readonly id="refreshViewCountRequestTokenName" value="@af.GetTokens(this.Context).HeaderName" />
+    </div>
+
+    @if (Model.Tags != null)
+    {<p>
+            @foreach (var tag in Model.Tags)
+            {
+                <a asp-area="BlogArea" asp-controller="Tag" asp-action="IndexAsync" asp-route-tagName="@tag.Tag?.TagName"> <span class="badge badge-success"><i class="fa fa-tag"></i> @tag.Tag?.TagName</span></a>
+            }
+        </p>
+    }
+    <!--Sharing buttons-->
+    <div class="flex-column">
+        @*<a class="nav-link d-inline-block" data-toggle="collapse" href="#sideBar" aria-expanded="true" aria-controls="sideBar">
+                <i class="fa fa-chevron-right" data-toggle="tooltip" data-placement="top" title="Click to close or expand the toolbar"></i> @SharedLocalizer["Toolbar"]
+            </a>*@
+        <div class="flex-column">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=@(Model.Title)&url=@(Url.BlogPostLink(Model.Blog.UniqueName, Model.UniqueName, Model.DatePublished.Value, Context.Request.Scheme))" class="text-secondary">
+                <i class="fa fa-twitter-square fa-2x"></i>
+            </a>
+            <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=@(Url.BlogPostLink(Model.Blog.UniqueName, Model.UniqueName, Model.DatePublished.Value, Context.Request.Scheme))" class="text-secondary">
+                <i class="fa fa-facebook-square fa-2x"></i>
+            </a>
+            <a target="_blank" href="https://plus.google.com/share?url=@(Url.BlogPostLink(Model.Blog.UniqueName, Model.UniqueName, Model.DatePublished.Value, Context.Request.Scheme))" class="text-secondary"><i class="fa fa-google-plus-square fa-2x"></i></a>
+            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=@(Url.BlogPostLink(Model.Blog.UniqueName, Model.UniqueName, Model.DatePublished.Value, Context.Request.Scheme))&title=@(Model.Title)&summary=@(Model.Description)&source=@(Url.BlogPostLink(Model.Blog.UniqueName, Model.UniqueName, Model.DatePublished.Value, Context.Request.Scheme))" class="text-secondary">
+                <i class="fa fa-linkedin-square fa-2x"></i>
+            </a>
+
+
+        </div>
+    </div>
+</div>
+<!--Nav-->
+@*<div class="text-center m-2">
+    <div class="btn-group btn-group-lg nav-pills justify-content-center mb-3 sticky-top" role="tablist" id="pills-tab">
+        <a class="btn btn-secondary" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> @SharedLocalizer["Home"]</a>
+        <a class="btn btn-secondary" asp-area="BlogArea" asp-controller="Home" asp-action="Index"> @SharedLocalizer["Docs"]</a>
+        <a class="btn btn-secondary" asp-area="BlogArea" asp-action="Detail" asp-controller="Home" asp-route-name="@Model.Blog.UniqueName" asp-route-page="" aria-expanded="true">@Html.Raw(Model.Blog.Title)</a>
+
+        @if (Model.BlogCategories != null)
+        {
+            foreach (var cate in Model.BlogCategories)
+            {
+                <a asp-area="BlogArea" asp-action="Index" asp-controller="BlogCategory" asp-route-blogName="@Model.Blog.UniqueName" asp-route-categoryName="@cate.BlogCategory.UniqueName" asp-route-page="" aria-expanded="true" class="btn btn-secondary">@Html.Raw(cate.BlogCategory.Title) </a>
+            }
+        }
+        <span class="btn btn-secondary active">@Html.Raw(Model.Title)</span>
+    </div>
+</div>*@
+<nav class="breadcrumb rounded-0">
+    <a class="breadcrumb-item" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> @SharedLocalizer["Home"]</a>
+    <a class="breadcrumb-item" asp-area="BlogArea" asp-controller="Home" asp-action="Index"> @SharedLocalizer["Docs"]</a>
+    <a class="breadcrumb-item" asp-area="BlogArea" asp-action="Detail" asp-controller="Home" asp-route-name="@Model.Blog.UniqueName" asp-route-page="" aria-expanded="true">@Html.Raw(Model.Blog.Title)</a>
+    <div class="breadcrumb-item">
+        @if (Model.BlogCategories != null)
+        {
+            foreach (var cate in Model.BlogCategories)
+            {
+                <a asp-area="BlogArea" asp-action="Index" asp-controller="BlogCategory" asp-route-blogName="@Model.Blog.UniqueName" asp-route-categoryName="@cate.BlogCategory.UniqueName" asp-route-page="" aria-expanded="true">@Html.Raw(cate.BlogCategory.Title) </a>
+            }
+        }
+    </div>
+    <span class="breadcrumb-item active">@Html.Raw(Model.Title)</span>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-sm-3">
+                    <!--Page navigations-->
+                    <div class="list-group sticky d-none d-md-block d-lg-block bg-light small" id="tableOfContent" data-toc="#toc" data-target="#postContent" data-headings="h1,h2,h3,h4,h5,h6">
+                        <div class="list-group-item bg-success text-white"><h4><i class="fa fa-list-ul"></i> @SharedLocalizer["In this page"]</h4></div>
+                        <nav class="nav flex-column navbar-nav">
+                            <ul id="toc"></ul>
+                        </nav>
+                    </div>
+
+                </div>
+                <div class="col-sm-9">
+                    <!--Post content-->
+                    <div class="p-3 bg-light" id="postContent">
+                        @if (Model.IsDeleted)
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                <button class="close" aria-label="Close" type="button" data-dismiss="alert">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <i class="fa fa-warning text-danger"> </i> This post is marked as deleted temporarily.
+                            </div>
+                        }
+                        else
+                        {
+
+                            @Html.Raw(Model.Text)
+                        }
+
+                    </div>
+                    <!--Disclaimer-->
+                    <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+                        <button class="close" aria-label="Close" type="button" data-dismiss="alert">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <i class="fa fa-warning text-warning"> </i> The opinions and comments expressed herein are my own personal opinions and do not represent my employer's view in any way.
+                    </div>
+                    <!--Sharing buttons-->
+                    <div class=" flex-column text-center bg-dark p-3">
+                        @*<a class="nav-link d-inline-block" data-toggle="collapse" href="#sideBar" aria-expanded="true" aria-controls="sideBar">
+                                <i class="fa fa-chevron-right" data-toggle="tooltip" data-placement="top" title="Click to close or expand the toolbar"></i> @SharedLocalizer["Toolbar"]
+                            </a>*@
+                        <div class="flex-column">
+                            <a target="_blank" href="https://twitter.com/intent/tweet?text=@(Model.Title)&url=@(Url.BlogPostLink(Model.Blog.UniqueName, Model.UniqueName, Model.DatePublished.Value, Context.Request.Scheme))" class="btn btn-info">
+                                <i class="fa fa-twitter-square"></i> Tweet This
+                            </a>
+                            <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=@(Url.BlogPostLink(Model.Blog.UniqueName, Model.UniqueName, Model.DatePublished.Value, Context.Request.Scheme))" class="btn btn-primary">
+                                <i class="fa fa-facebook-square"></i> Share on Facebook
+                            </a>
+                            <a target="_blank" href="https://plus.google.com/share?url=@(Url.BlogPostLink(Model.Blog.UniqueName, Model.UniqueName, Model.DatePublished.Value, Context.Request.Scheme))" class="btn btn-danger"><i class="fa fa-google-plus-square"></i> Plus on Google+</a>
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=@(Url.BlogPostLink(Model.Blog.UniqueName, Model.UniqueName, Model.DatePublished.Value, Context.Request.Scheme))&title=@(Model.Title)&summary=@(Model.Description)&source=@(Url.BlogPostLink(Model.Blog.UniqueName, Model.UniqueName, Model.DatePublished.Value, Context.Request.Scheme))" class="btn btn-primary">
+                                <i class="fa fa-linkedin-square"></i> Share on LinkedIn
+                            </a>
+
+
+                        </div>
+                    </div>
+                    <!--Related posts-->
+                    <div class="card mt-3 mb-3 border-0">
+                        <div class="card-header"><h3><i class="fa fa-list-alt"></i> @SharedLocalizer["Related pages"]</h3></div>
+                    </div>
+                    @await Component.InvokeAsync("RelatedPostList", new { postId = Model.BlogPostId })
+
+                    @if (!Model.IsDeleted)
+                    {
+                        <!--Add comment-->
+                        <div class="card mt-3">
+                            <div class="card-header"><h3><i class="fa fa-commenting"></i> @SharedLocalizer["Add comment"]</h3></div>
+                            <div class="card-body">
+                                @await Html.PartialAsync("_AddCommentPartial", new BlogPostCommentViewModel { Title = $"Re: {Model.Title}", BlogPostId = Model.BlogPostId, BlogId = Model.BlogId })
+                            </div>
+                        </div>
+                        <!--Comments-->
+                        <div id="commentArea"></div>
+                        @await Component.InvokeAsync("BlogPostCommentList", new { blogPostId = Model.BlogPostId })
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="sticky">
+                <!--Tags cloud-->
+                @*<div class="mt-3 d-none d-md-block d-lg-block">
+                        @await Component.InvokeAsync("TagList")
+                    </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+    {
+    @await Html.PartialAsync("_HtmlEditorScriptPartial")
+}

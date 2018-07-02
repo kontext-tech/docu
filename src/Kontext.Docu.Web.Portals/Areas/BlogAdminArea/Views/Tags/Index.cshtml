@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Kontext.Data.Models.Tag>
+
+@{
+    ViewData["Title"] = SharedLocalizer["Manage tags"];
+    ViewData.AddActivePage(ManageNavPages.ManageTags);
+}
+
+@if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ManageTags))
+{
+    <a class="btn btn-primary mb-3" asp-action="Create"><i class="fa fa-plus-circle"></i> @SharedLocalizer["Create tag"]</a>
+    <a class="btn btn-outline-success mb-3" asp-action="RebuildNTile"><i class="fa fa-refresh"></i> @SharedLocalizer["Rebuild NTile"]</a>
+}
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TagName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NTile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsDeleted)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateDeleted)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateCreated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateModified)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Language)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TagName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NTile)
+                    </td>
+                    <td class="@(item.IsDeleted?"bg-warning":"")">
+                        @Html.DisplayFor(modelItem => item.IsDeleted)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateDeleted)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateCreated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateModified)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Language.LanguageCode)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.TagId" class="btn btn-outline-success"><i class="fa fa-edit"></i> @SharedLocalizer["Edit"]</a>
+                        <a asp-action="Details" asp-route-id="@item.TagId" class="btn btn-outline-primary"><i class="fa fa-eye"></i> @SharedLocalizer["View"]</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

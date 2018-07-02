@@ -1,0 +1,25 @@
+﻿@model BlogCategory
+@{
+    ViewData["Title"] = SharedLocalizer["Merge blog category"];
+    ViewData.AddActivePage(ManageNavPages.ManageBlogCategories);
+}
+<div class="row">
+    <div class="col-8">
+        <form asp-action="MergeCategory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="id" value="@Model.BlogCategoryId" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" readonly class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">@SharedLocalizer["To Category"]</label>
+                <select name="toId" class="form-control" asp-items="ViewBag.Cates"></select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> @SharedLocalizer["Merge"]</button>
+                <a asp-action="Index" class="btn btn-outline-success"><i class="fa fa-arrow-circle-left"></i> @SharedLocalizer["Back to list"]</a>
+            </div>
+        </form>
+    </div>
+</div>

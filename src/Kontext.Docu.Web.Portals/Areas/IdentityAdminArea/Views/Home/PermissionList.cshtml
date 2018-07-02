@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ApplicationPermission>
+@{
+    ViewData["Title"] = SharedLocalizer["Application permissions"];
+    ViewData.AddActivePage(ManageNavPages.PermissionList);
+}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">@SharedLocalizer["Name"]</th>
+                <th scope="col">@SharedLocalizer["Group"]</th>
+                <th scope="col">@SharedLocalizer["Description"]</th>
+                <th scope="col">@SharedLocalizer["Has Permission?"]</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <th scope="row">@p.Name</th>
+                    <td>@p.GroupName</td>
+                    <td>@p.Description</td>
+                    <td>
+                        @if (User.HasPermissionClaim(p.Value))
+                        {
+                            <i class="fa fa-2x fa-check-circle text-success"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-2x fa-close text-danger"></i>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

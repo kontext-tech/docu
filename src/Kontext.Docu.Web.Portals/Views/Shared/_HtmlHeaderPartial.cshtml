@@ -1,0 +1,39 @@
+﻿@using Kontext.Services;
+@inject IConfigService ConfigService
+@{
+    var keyWords = ConfigService.SiteConfig.SiteKeyWords;
+    var description = ConfigService.SiteConfig.SiteDescription;
+    if (ViewData[Constants.PageKeywordsViewDataKey] != null)
+    {
+        keyWords = ViewData[Constants.PageKeywordsViewDataKey].ToString();
+    }
+
+    if (ViewData[Constants.PageDescriptionViewDataKey] != null)
+    {
+        description = ViewData[Constants.PageDescriptionViewDataKey].ToString();
+    }
+}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta name="author" content="@ConfigService.SiteConfig.SiteAuthor" />
+<meta name="Generator" content="Kontext Docu Version @ConfigService.SiteConfig.AppVersion" />
+@*<meta http-equiv="content-language" content="">*@
+<meta name="keywords" content="@keyWords" />
+<meta name="description" content="@description" />
+
+<title>@ViewData["Title"] - Powered by Kontext</title>
+
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/lib/summernote/dist/summernote-bs4.css" />
+</environment>
+<environment exclude="Development">
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+</environment>
+
+
+<environment exclude="Development">
+</environment>

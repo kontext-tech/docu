@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kontext.Configuration\Kontext.Configuration.csproj" />
+    <ProjectReference Include="..\Kontext.Core\Kontext.Core.csproj" />
+    <ProjectReference Include="..\Kontext.Data\Kontext.Data.csproj" />
+  </ItemGroup>
+  
+</Project>

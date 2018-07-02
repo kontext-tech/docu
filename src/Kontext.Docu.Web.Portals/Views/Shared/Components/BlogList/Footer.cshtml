@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Kontext.Data.Models.ViewModels.BlogViewModel>
+@{
+    Layout = null;
+}
+
+<div class="card border-0 bg-transparent">
+    <div class="card-body">
+        <div class="card-title"><h2> @SharedLocalizer["Docs"]</h2></div>
+        <ul class="list-group list-group-flush bg-transparent">
+            @foreach (var blog in Model)
+            {
+                <li class="list-group-item border-0 bg-transparent">
+                    <a asp-area="BlogArea" asp-action="Detail" asp-controller="Home" asp-route-name="@blog.UniqueName" aria-expanded="true" class="text-light">@SharedLocalizer[blog.Title]</a> <a target="_blank" href="@Url.RssLink(blog.BlogId, Context.Request.Scheme)" class="text-light"><i class="fa fa-rss"></i></a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

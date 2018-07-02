@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = SharedLocalizer["Identity admin home"];
+    ViewData.AddActivePage(ManageNavPages.Index);
+}
+<div class="jumbotron">
+    <h3 class="jumbotron-heading">@SharedHtmlLocalizer["Welcome to Identity admin home page to manage users and roles."]</h3>
+</div>
+<p>
+    <section class="row text-center placeholders">
+        <div class="col-3 col-sm-3 placeholder">
+            <img width="100" height="100" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=">
+            <h4>@ViewData["UserCount"]</h4>
+            <div class="text-muted">@SharedLocalizer["User Count"]</div>
+        </div>
+        <div class="col-3 col-sm-3 placeholder">
+            <img width="100" height="100" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=">
+            <h4>@ViewData["RoleCount"]</h4>
+            <span class="text-muted">@SharedLocalizer["Role Count"]</span>
+        </div>
+        <div class="col-3 col-sm-3 placeholder">
+            <img width="100" height="100" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=">
+            <h4>@ViewData["PermissionCount"]</h4>
+            <div class="text-muted">@SharedLocalizer["Permission Count"]</div>
+        </div>
+    </section>
+
+</p>

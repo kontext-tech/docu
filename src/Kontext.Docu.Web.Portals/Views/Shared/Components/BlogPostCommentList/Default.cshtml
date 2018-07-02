@@ -1,0 +1,68 @@
+﻿@model IEnumerable<BlogPostComment>
+@inject IConfigService ConfigService
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    Layout = null;
+    var colors = new string[] { "bg-primary", "bg-secondary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-dark", "bg-light" };
+    var colorsCount = colors.Length;
+    var isSignedIn = false;
+    if (SignInManager.IsSignedIn(User))
+    {
+        isSignedIn = true;
+    }
+}
+
+<div class="card mt-3 mb-3 border-0">
+    <h3 class="card-header">
+        <i class="fa fa-comments"></i> @SharedLocalizer["Comments"] (@Model.Count())
+    </h3>
+</div>
+
+@if (Model.Count() <= 0)
+{
+    <div class="alert alert-info"><i class="fa fa-warning"></i> No comments yet.</div>
+}
+else
+{
+    foreach (var comment in Model)
+    {
+        if (!comment.IsDeleted)
+        {
+            <div class="card mb-3 @(comment.BlogPost.Email == comment.Email ? "border-success bg-light" : "")">
+                <div class="card-body">
+                    <a id="@comment.BlogPostCommentId"></a>
+                    <div class="card-title"> <span class="btn btn-circle btn-lg text-white @(colors[colorsCount.GetRandomNumber()])">@comment.Author.ToInitials()</span> @Html.Raw(comment.Title)</div>
+                    <p class="text-muted small">
+                        <i class="fa fa-user"></i> @(isSignedIn ? comment.Author : comment.Author.ToMaskedText()) <i class="fa fa-calendar"></i> @comment.DateCreated.ToTimeAgo()
+                    </p>
+                    <div class="card-text">@Html.Raw(comment.Text)</div>
+                    @if (comment.ReplyToBlogPostComment != null)
+                    {
+                        <i class="fa fa-quote-left text-primary"></i>
+                        <div class="card m-3">
+                            <div class="card-body font-italic">
+
+                                @if (!comment.ReplyToBlogPostComment.IsDeleted)
+                                {
+                                    <p class="text-muted small"><i class="fa fa-user"></i> @(isSignedIn ? comment.ReplyToBlogPostComment.Author : comment.ReplyToBlogPostComment.Author.ToMaskedText()) <i class="fa fa-calendar"></i> @comment.ReplyToBlogPostComment.DateCreated.ToTimeAgo()</p>
+                                    <div class="card-text small">@Html.Raw(comment.ReplyToBlogPostComment.Text)</div>
+                                }
+                                else
+                                {
+                                    <div class="alert alert-danger">
+                                        <i class="fa fa-close"></i> <span>@SharedLocalizer["The comment has been deleted."]</span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    }
+                    @if (ConfigService.BlogConfig.AllowComments && !comment.DateCreated.IsOld() && isSignedIn)
+                    {
+                        <button class="btn btn-outline-primary" onclick="replyToBlogComment(@comment.BlogPostCommentId,'@comment.Author','#ReplyToBlogPostCommentId','#commentInputArea')"><i class="fa fa-reply"></i> @SharedLocalizer["Reply"]</button>
+                    }
+                </div>
+            </div>
+        }
+    }
+}

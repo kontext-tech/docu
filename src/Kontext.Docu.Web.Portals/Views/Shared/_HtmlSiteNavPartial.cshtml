@@ -1,0 +1,45 @@
+﻿@using Kontext.Services;
+@inject IConfigService ConfigService;
+@await Html.PartialAsync("_CookieBanner")
+<nav class="navbar navbar-expand navbar-light bg-light" style="z-index:10000">
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@ConfigService.SiteConfig.SiteName</a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" asp-area="BlogArea" asp-controller="Home" asp-action="Index"> @SharedHtmlLocalizer["Docs"]</a></li>
+        <li class="nav-item dropdown dropdown-hover megamenu">
+            <a class="nav-link" href="#" aria-expanded="true" data-toggle="dropdown"> @SharedHtmlLocalizer["Tags"]&nbsp;<i class="fa fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+                @await Component.InvokeAsync("TagList", new { viewName = "Menu" })
+            </div>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item small">
+            <a href="@Url.RssLink(Context.Request.Scheme)" target="_blank" class="nav-link" title="@SharedLocalizer["Subscribe"]">
+                <i class="fa fa-rss-square fa-2x"></i>
+            </a>
+        </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0 d-none d-sm-block" method="get" asp-area="" asp-controller="Search" asp-action="Index">
+        <div class="input-group">
+            <input class="form-control" name="q" type="text" placeholder="@SharedLocalizer["Search"]" /><div class="input-group-append">
+                <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+
+</nav>
+<nav class="navbar navbar-expand-md navbar-dark bg-kontext @(ViewBag.HideStickyNavBar==null?"sticky-top":"")">
+    <ul class="navbar-nav"><li class="nav-item"><a class="nav-link small text-white-50" asp-area="" asp-controller="Home" asp-action="Index" title="@SharedLocalizer["Home"]"><i class="fa fa-home fa-2x"></i>&nbsp;</a></li></ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsMain">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsMain">
+        <ul class="navbar-nav mr-auto btn-group btn-group-lg">
+            @*<li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="About"><i class="fa fa-info-circle"></i>&nbsp;About</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+            @await Component.InvokeAsync("BlogList", new { viewName = "Menu" })
+        </ul>
+        @await Html.PartialAsync("_SelectLanguagePartial")
+        @await Html.PartialAsync("_LoginPartial")
+    </div>
+</nav>

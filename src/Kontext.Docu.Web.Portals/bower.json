@@ -1,0 +1,15 @@
+{
+  "name": "kontext-v3.0.0-alpha.6",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "v4.1.1",
+    "jquery": "3.3.1",
+    "jquery-validation": "jquery-validate#1.17.0",
+    "jquery-validation-unobtrusive": "v3.2.9",
+    "popper.js": "v1.14.3",
+    "font-awesome": "4.7.0",
+    "Stickyfill": "1.1.4",
+    "summernote": "v0.8.9",
+    "jquery.toc": "v0.4.0"
+  }
+}

@@ -1,0 +1,73 @@
+@using Microsoft.AspNetCore.Identity
+@using Kontext.Security
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var isPolicyReview = Context.Request.Cookies.ContainsKey(Constants.CookieNameForAcceptedKey);
+
+    var returnUrl = Url.Action(
+                action: "PrivacyPolicy",
+                controller: "Home",
+                values: new
+                {
+                },
+                protocol: Context.Request.Scheme);
+}
+
+@if (user != null && SignInManager.IsSignedIn(User))
+{
+
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle pl-2" asp-area="" asp-controller="Manage" asp-action="Index" title="Manage" data-toggle="dropdown"><i class="fa fa-user-o"></i>&nbsp;@(user.FullName ?? user.UserName)&nbsp;<i class="fa fa-chevron-down"></i></a>
+
+            <div class="dropdown-menu dropdown-menu-right">
+                <a asp-action="Index" asp-controller="Manage" asp-area="" class="dropdown-item"><i class="fa fa-user"></i>&nbsp;@SharedHtmlLocalizer["Profile"]</a>
+                <a asp-action="ChangePassword" asp-controller="Manage" asp-area="" class="dropdown-item"><i class="fa fa-key"></i>&nbsp;@SharedHtmlLocalizer["Change password"]</a>
+                <a asp-action="MyComments" asp-controller="Manage" class="dropdown-item"><i class="fa fa-comments"></i>&nbsp;@SharedLocalizer["My comments"]</a>
+                <a asp-action="DeletePersonalData" asp-controller="Manage" class="dropdown-item"><i class="fa fa-remove"></i>&nbsp;@SharedLocalizer["Delete personal data"]</a>
+                @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.GenericAdmin))
+                {
+                    <div class="dropdown-divider"></div>
+                    <a asp-action="Index" asp-controller="Home" asp-area="IdentityAdminArea" class="dropdown-item"><i class="fa fa-cogs"></i>&nbsp;@SharedHtmlLocalizer["Identity admin home"]</a>
+                    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ManageBlogs))
+                    {
+                        <a asp-action="Index" asp-controller="Blogs" asp-area="BlogAdminArea" class="dropdown-item"><i class="fa fa-list-alt"></i>&nbsp;@SharedHtmlLocalizer["Manage blogs"]</a>
+                    }
+                }
+
+                @if (isPolicyReview)
+                {
+                    <div class="dropdown-divider"></div>
+                    <a class=" dropdown-item" asp-action="ShowCookieBanner" asp-area="" asp-controller="Home" asp-route-returnUrl="@returnUrl" target="_blank"><i class="fa fa-eye"></i> @SharedLocalizer["Cookie and Privacy policy"]</a>
+                }
+
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-item">
+                    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                        <button type="submit" class="btn btn-link nav-link text-dark"><i class="fa fa-sign-out"></i>&nbsp;@SharedHtmlLocalizer["Log out"]</button>
+                    </form>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle pl-2" asp-area="" asp-controller="Manage" asp-action="Index" title="Manage" data-toggle="dropdown"><i class="fa fa-user-o"></i>&nbsp;@SharedHtmlLocalizer["User"] &nbsp;<i class="fa fa-chevron-down"></i></a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Login" asp-route-ReturnUrl="@returnUrl"><i class="fa fa-sign-in"></i>&nbsp;@SharedHtmlLocalizer["Log in"]</a>
+                <a class=" dropdown-item" asp-area="" asp-controller="Account" asp-action="Register"><i class="fa fa-user-plus"></i>&nbsp;@SharedHtmlLocalizer["Register"]</a>
+                @if (isPolicyReview)
+                {
+                    <div class="dropdown-divider"></div>
+                    <a class=" dropdown-item" asp-action="ShowCookieBanner" asp-area="" asp-controller="Home" asp-route-returnUrl="@returnUrl"><i class="fa fa-eye"></i> @SharedLocalizer["Cookie and Privacy policy"]</a>
+                }
+            </div>
+    </ul>
+}

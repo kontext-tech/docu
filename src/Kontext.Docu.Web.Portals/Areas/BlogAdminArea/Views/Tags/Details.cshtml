@@ -1,0 +1,59 @@
+﻿@model Kontext.Data.Models.Tag
+
+@{
+    ViewData["Title"] = SharedLocalizer["Tag details"];
+    ViewData.AddActivePage(ManageNavPages.ManageTags);
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TagName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TagName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NTile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NTile)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDeleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateDeleted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateModified)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateModified)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Language)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Language.LanguageCode)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ManageTags))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.TagId" class="btn btn-outline-success"><i class="fa fa-edit"></i> @SharedLocalizer["Edit"]</a>
+    }
+    <a asp-action="Index" class="btn btn-outline-success"><i class="fa fa-arrow-circle-left"></i> @SharedLocalizer["Back to list"]</a>
+</div>

@@ -1,0 +1,17 @@
+﻿@using Kontext.Services;
+@inject IConfigService ConfigService;
+@{
+    var isPolicyReview = Context.Request.Cookies.ContainsKey(Constants.CookieNameForAcceptedKey);
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
+}
+
+@if (!isPolicyReview)
+{
+    <div class="alert alert-success bg-dark text-light text-center sticky-top sticky m-0 p-2" style="z-index:10005">
+        <div class="container">
+            <i class="fa fa-exclamation-triangle"></i>
+            This site uses cookies to deliver our services. By using this site, you acknowledge that you have read and understand our <a asp-action="PrivacyPolicy" asp-area="" asp-controller="Home" class="text-success">@SharedLocalizer["Cookie and Privacy policy"]</a>. Your use of @ConfigService.SiteConfig.SiteName website is subject to this policy.
+            <a asp-action="DismissCookieBanner" asp-area="" asp-controller="Home" asp-route-returnUrl="@returnUrl" class="btn btn-outline-warning"><i class="fa fa-eye-slash"></i> @SharedLocalizer["Allow Cookies and Dismiss"]</a>
+        </div>
+    </div>
+}

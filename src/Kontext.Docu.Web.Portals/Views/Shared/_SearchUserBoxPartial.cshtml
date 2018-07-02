@@ -1,0 +1,11 @@
+﻿@if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.ViewUsers))
+{
+    <form asp-action="Search" asp-controller="User" asp-area="IdentityAdminArea" method="get">
+        <div class="input-group mb-3">
+            <input type="text" width="300" class="form-control" required placeholder="@SharedLocalizer["Search user"]" name="keyword" value="@ViewData["keyword"]">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+}

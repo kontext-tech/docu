@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Tag>
+@{
+    Layout = null;
+}
+
+@if (Model.Count() > 0)
+{
+    <div class="card">
+        <div class="card-header bg-success text-white"><h4><i class="fa fa-tags"></i> @SharedLocalizer["Tags cloud"] </h4></div>
+        <div class="card-body">
+            <ul class="tagList">
+                @foreach (var item in Model)
+                {
+                    <li class="tagItem @($"level{item.NTile}")">
+                        <span><a asp-area="BlogArea" asp-controller="Tag" asp-action="IndexAsync" asp-route-tagName="@item.TagName" class="text-dark">@item.TagName.ToLower()</a></span>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}

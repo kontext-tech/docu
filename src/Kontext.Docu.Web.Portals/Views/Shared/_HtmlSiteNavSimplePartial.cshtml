@@ -1,0 +1,19 @@
+﻿@using Kontext.Services;
+@inject IConfigService ConfigService
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@ConfigService.SiteConfig.SiteName</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsMain">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsMain">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i>&nbsp;@SharedLocalizer["Home"]</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="BlogArea" asp-controller="Home" asp-action="Index"> @SharedLocalizer["Docs"]</a></li>
+
+            </ul>
+            @await Html.PartialAsync("_SelectLanguagePartial")
+            @await Html.PartialAsync("_LoginPartial")
+        </div>
+    </nav>
+</div>

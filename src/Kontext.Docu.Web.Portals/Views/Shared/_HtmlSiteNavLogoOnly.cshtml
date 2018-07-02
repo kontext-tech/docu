@@ -1,0 +1,5 @@
+﻿@using Kontext.Services;
+@inject IConfigService ConfigService
+<div class="container-fluid text-center">
+    <h1 class="p-2"><a asp-area="" asp-controller="Home" asp-action="Index">@SharedHtmlLocalizer[$"{ConfigService.SiteConfig.SiteName}"]</a></h1>
+</div>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BlogPostComment>
+@{
+    Layout = null;
+    var colors = new string[] { "bg-primary", "bg-secondary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-dark", "bg-light" };
+    var colorsCount = colors.Length;
+}
+
+<div class="d-flex row justify-content-sm-center">
+    @foreach (var comment in Model)
+    {
+        @if (!comment.IsDeleted)
+        {
+            <div class="col-sm-4 mb-sm-1">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title"><a class="nav-link" asp-area="BlogArea" asp-action="Index" asp-controller="BlogPost" asp-route-blogName="@comment.Blog.UniqueName" asp-route-postName="@comment.BlogPost.UniqueName" asp-fragment="@comment.BlogPostCommentId"><span class="btn btn-circle btn-sm text-white @(colors[colorsCount.GetRandomNumber()])">@comment.Author.ToInitials()</span> @Html.Raw(comment.Title) </a></div>
+                        <p class="text-muted small">@*<i class="fa fa-user"></i> @comment.Author*@ <i class="fa fa-calendar"></i> @comment.DateCreated.ToTimeAgo()</p>
+                        <div class="card-text">@Html.Raw(comment.Text)</div>
+                        @*@if (comment.ReplyToBlogPostComment != null)
+                            {
+                                    <i class="fa fa-quote-left text-primary"></i>
+                                    <div class="card m-3">
+                                        <div class="card-body font-italic">
+                                            <p class="text-muted small"><i class="fa fa-user"></i> @comment.ReplyToBlogPostComment.Author <i class="fa fa-calendar"></i> @comment.ReplyToBlogPostComment.DateCreated.ToTimeAgo()</p>
+                                            <div class="card-text small">@Html.Raw(comment.ReplyToBlogPostComment.Text)</div>
+                                        </div>
+                                    </div>
+                            }*@
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

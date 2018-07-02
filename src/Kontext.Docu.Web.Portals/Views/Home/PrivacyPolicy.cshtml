@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = SharedLocalizer["Cookie and Privacy policy"];
+    //Layout = "_LayoutNarrow";
+    var returnUrl = Url.Action(
+                action: "PrivacyPolicy",
+                controller: "Home",
+                values: new
+                {
+                },
+                protocol: Context.Request.Scheme);
+}
+@await Html.PartialAsync("_GenericSiteNav")
+<div class="jumbotron bg-dark text-light">
+    <div class="container">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <div class="list-group sticky d-none d-md-block d-lg-block bg-light small" id="tableOfContent" data-toc="#toc" data-target="#policy" data-headings="h1,h2,h3,h4,h5,h6">
+            <div class="list-group-item bg-success text-white"><h3><i class="fa fa-list-ul"></i> @SharedLocalizer["In this page"]</h3></div>
+            <nav class="nav flex-column navbar-nav">
+                <ul id="toc" class="p-2"></ul>
+            </nav>
+        </div>
+    </div>
+    <div class="col-md-10 col-sm-12" id="policy">
+        <h3>To be added</h3>
+        <div class="alert alert-danger">
+            <i class="fa fa-warning"></i> @SharedLocalizer["Cookie and Privacy policy"] is to be added.
+        </div>
+    </div>
+</div>
