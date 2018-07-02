@@ -14,7 +14,6 @@ namespace Kontext.Data
         public DbSet<BlogPostTag> BlogPostTags { get; set; }
         public DbSet<BlogMediaObject> BlogMediaObjects { get; set; }
         public DbSet<Language> Languages { get; set; }
-        public DbSet<EmailMessage> EmailMessages { get; set; }
 
         public ContextBlogDbContext(DbContextOptions<ContextBlogDbContext> options)
             : base(options)
