@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = SharedLocalizer["Signed out"];
+}
+@await Html.PartialAsync("_GenericSiteNav")
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <p>
+        @SharedHtmlLocalizer["You have successfully signed out."]
+    </p>
+</div>

@@ -1,0 +1,97 @@
+﻿@model Kontext.Data.Models.EmailMessage
+
+@{
+    ViewData["Title"] = SharedLocalizer["Email details"];
+    ViewData.AddActivePage(ManageNavPages.ManageEmails);
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageBody)
+        </dt>
+        <dd class="bg-light p-5 text-muted">
+            @Html.Raw(Model.MessageBody)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FromEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FromEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FromEmailDisplayName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FromEmailDisplayName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ToEmails)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ToEmails)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CCEmails)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CCEmails)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsSent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsSent)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsSuccessful)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsSuccessful)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateSent)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDeleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateDeleted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateModified)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateModified)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-success" asp-action="Index"><i class="fa fa-arrow-circle-left"></i> @SharedHtmlLocalizer["Back to list"]</a>
+</div>

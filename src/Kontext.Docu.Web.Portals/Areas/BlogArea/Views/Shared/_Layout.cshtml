@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "/Views/Shared/_LayoutNoPadding.cshtml";
+}
+
+@RenderBody()
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+}
+
+@section HtmlHeadSection {
+    @await RenderSectionAsync("HtmlHeadSection", required: false)
+}

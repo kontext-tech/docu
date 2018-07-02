@@ -1,0 +1,167 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<div class="nav flex-column nav-pills d-none d-md-block d-lg-block">
+    <a asp-action="Index" asp-controller="Home" asp-area="IdentityAdminArea" class="nav-link @ManageNavPages.IndexNavClass(ViewContext)"><i class="fa fa-cogs text-success"></i>&nbsp; @SharedHtmlLocalizer["Identity admin home"]</a>
+
+    @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.GenericAdmin))
+    {
+        <a asp-action="PermissionList" asp-controller="Home" asp-area="IdentityAdminArea" class="nav-link @ManageNavPages.PermissionListNavClass(ViewContext)">
+            <i class="fa fa-list text-success"></i>&nbsp;@SharedHtmlLocalizer["Application permissions"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.ViewRoles))
+    {
+        <a asp-action="List" asp-controller="Role" asp-area="IdentityAdminArea" class="nav-link @ManageNavPages.ManageRolesNavClass(ViewContext)" asp-route-page="">
+            <i class="fa fa-user-o text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage roles"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.ViewUsers))
+    {
+        <a asp-action="List" asp-controller="User" asp-area="IdentityAdminArea" class="nav-link @ManageNavPages.ManageUsersNavClass(ViewContext)" asp-route-page="">
+            <i class="fa fa-users text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage users"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.ManageEmails))
+    {
+        <hr />
+        <a asp-action="Index" asp-controller="EmailMessages" asp-area="IdentityAdminArea" class="nav-link @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageEmails)">
+            <i class="fa fa-inbox text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage emails"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.GenericAdmin))
+    {
+        <hr />
+        <a asp-action="Index" asp-controller="CacheEntries" asp-area="IdentityAdminArea" class="nav-link @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageCache)">
+            <i class="fa fa-trash text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage cache"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogs) || User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogPosts) || User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogCategories) || User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogComments))
+    {
+
+        <hr />
+    }
+
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogs))
+    {
+        <a asp-action="Index" asp-controller="Blogs" asp-area="BlogAdminArea" class="nav-link @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageBlogs)">
+            <i class="fa fa-list-alt text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage blogs"]
+        </a>
+
+    }
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogCategories))
+    {
+        <a asp-action="Index" asp-controller="BlogCategories" asp-area="BlogAdminArea" class="nav-link @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageBlogCategories)">
+            <i class="fa fa-table text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage blog categories"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogPosts))
+    {
+        <a asp-action="Index" asp-controller="BlogPosts" asp-area="BlogAdminArea" class="nav-link @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageBlogPosts)">
+            <i class="fa fa-newspaper-o text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage blog posts"]
+        </a>
+    }
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogComments))
+    {
+        <a asp-action="Index" asp-controller="BlogPostComments" asp-area="BlogAdminArea" class="nav-link @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageBlogComments)">
+            <i class="fa fa-comments text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage blog comments"]
+        </a>
+    }
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ManageTags))
+    {
+        <a asp-action="Index" asp-controller="Tags" asp-area="BlogAdminArea" class="nav-link @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageTags)">
+            <i class="fa fa-tags text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage tags"]
+        </a>
+    }
+
+</div>
+
+<div class="nav flex-row d-sm-block d-lg-none d-md-none">
+    <a asp-action="Index" asp-controller="Home" asp-area="IdentityAdminArea" class="btn btn-outline-primary @ManageNavPages.IndexNavClass(ViewContext)"><i class="fa fa-cogs text-success"></i>&nbsp; @SharedHtmlLocalizer["Identity admin home"]</a>
+
+    @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.GenericAdmin))
+    {
+        <a asp-action="PermissionList" asp-controller="Home" asp-area="IdentityAdminArea" class="btn btn-outline-primary @ManageNavPages.PermissionListNavClass(ViewContext)">
+            <i class="fa fa-list text-success"></i>&nbsp;@SharedHtmlLocalizer["Application permissions"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.ViewRoles))
+    {
+        <a asp-action="List" asp-controller="Role" asp-area="IdentityAdminArea" class="btn btn-outline-primary @ManageNavPages.ManageRolesNavClass(ViewContext)" asp-route-page="">
+            <i class="fa fa-user-o text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage roles"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.ViewUsers))
+    {
+        <a asp-action="List" asp-controller="User" asp-area="IdentityAdminArea" class="btn btn-outline-primary @ManageNavPages.ManageUsersNavClass(ViewContext)" asp-route-page="">
+            <i class="fa fa-users text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage users"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.ManageEmails))
+    {
+        <hr />
+        <a asp-action="Index" asp-controller="EmailMessages" asp-area="IdentityAdminArea" class="btn btn-outline-primary @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageEmails)">
+            <i class="fa fa-inbox text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage emails"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(DefaultApplicationPermissionProvider.GenericAdmin))
+    {
+        <hr />
+        <a asp-action="Index" asp-controller="CacheEntries" asp-area="IdentityAdminArea" class="btn btn-outline-primary @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageCache)">
+            <i class="fa fa-trash text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage cache"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogs) || User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogPosts) || User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogCategories) || User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogComments))
+    {
+
+        <hr />
+    }
+
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogs))
+    {
+        <a asp-action="Index" asp-controller="Blogs" asp-area="BlogAdminArea" class="btn btn-outline-primary @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageBlogs)">
+            <i class="fa fa-list text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage blogs"]
+        </a>
+
+    }
+
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogCategories))
+    {
+        <a asp-action="Index" asp-controller="BlogCategories" asp-area="BlogAdminArea" class="btn btn-outline-primary @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageBlogCategories)">
+            <i class="fa fa-table text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage blog categories"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogPosts))
+    {
+        <a asp-action="Index" asp-controller="BlogPosts" asp-area="BlogAdminArea" class="btn btn-outline-primary @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageBlogPosts)">
+            <i class="fa fa-newspaper-o text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage blog posts"]
+        </a>
+    }
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogComments))
+    {
+        <a asp-action="Index" asp-controller="BlogPostComments" asp-area="BlogAdminArea" class="btn btn-outline-primary @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageBlogComments)">
+            <i class="fa fa-comments text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage blog comments"]
+        </a>
+    }
+
+    @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ManageTags))
+    {
+        <a asp-action="Index" asp-controller="Tags" asp-area="BlogAdminArea" class="btn btn-outline-primary @ManageNavPages.GenericClass(ViewContext, ManageNavPages.ManageTags)">
+            <i class="fa fa-tags text-success"></i>&nbsp;@SharedHtmlLocalizer["Manage tags"]
+        </a>
+    }
+</div>

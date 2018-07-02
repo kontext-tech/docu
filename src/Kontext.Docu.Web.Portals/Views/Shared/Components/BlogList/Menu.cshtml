@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Kontext.Data.Models.ViewModels.BlogViewModel>
+@{
+    Layout = null;
+}
+
+@foreach (var blog in Model)
+{
+    <li class="nav-item dropdown btn btn-kontext">
+        <a class="nav-link @ManageNavPages.CategoryNavClass(ViewContext,blog.UniqueName) p-0" asp-area="BlogArea" asp-action="Detail" asp-controller="Home" asp-route-name="@blog.UniqueName" aria-expanded="true" data-toggle="dropdown">@SharedLocalizer[blog.Title]&nbsp;<i class="fa fa-chevron-down"></i></a>
+        <div class="dropdown-menu">
+
+            @foreach (var cate in blog.Categories)
+            {
+                if (cate.Active)
+                {
+                    <a class="dropdown-item" asp-area="BlogArea" asp-action="Index" asp-controller="BlogCategory" asp-route-blogName="@blog.UniqueName" asp-route-categoryName="@cate.UniqueName" asp-route-page="">@cate.Title</a>
+                }
+            }
+        </div>
+    </li>
+}

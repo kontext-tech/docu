@@ -1,0 +1,137 @@
+﻿@model IEnumerable<Kontext.Data.Models.Blog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BlogGroupId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UniqueName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SkinCssFile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SecondaryCss)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PostCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PingTrackCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.News)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TrackingCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tag)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateCreated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateModified)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogGroupId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniqueName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkinCssFile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondaryCss)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PingTrackCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.News)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrackingCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateModified)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language.LanguageCode)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BlogId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BlogId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BlogId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

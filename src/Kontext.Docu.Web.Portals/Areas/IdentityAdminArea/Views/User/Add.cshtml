@@ -1,0 +1,73 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = SharedLocalizer[$"Add user"];
+    ViewData.AddActivePage(ManageNavPages.ManageUsers);
+}
+@inject IAccountManager accountManager;
+@{
+    var roles = await accountManager.GetRolesLoadRelatedAsync(-1, -1);
+}
+
+<div class="col-8">
+    <form asp-action="Add">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="UserName" class="control-label"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FullName" class="control-label"></label>
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input asp-for="IsEnabled" /> @Html.DisplayNameFor(model => model.IsEnabled)
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input asp-for="IsLockedOut" /> @Html.DisplayNameFor(model => model.IsLockedOut)
+                </label>
+            </div>
+        </div>
+
+        <hr />
+        <div class="form-group row">
+            <label class="control-label col-md-2">@SharedLocalizer["Roles"]:</label>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                @foreach (var role in roles)
+            {
+                <div class="checkbox">
+                    <label for="checkboxes-@role.Id">
+                        <input name="roles" id="checkboxes-@role.Id" type="checkbox" value="@role.Name">
+                    </label>
+                    @role.Name
+                </div>
+        }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> @SharedLocalizer["Save"]</button>
+            <a class="btn btn-outline-success" asp-action="List"><i class="fa fa-arrow-circle-left"></i> @SharedHtmlLocalizer["Back to list"]</a>
+        </div>
+    </form>
+
+</div>

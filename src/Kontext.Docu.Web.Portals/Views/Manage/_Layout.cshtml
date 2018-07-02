@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "/Views/Shared/_LayoutFluid.cshtml";
+}
+
+<div>
+    <div class="row">
+        <div class="col-md-3 bg-light">
+            <div class="mt-2 sticky">
+                @await Html.PartialAsync("_ManageNav")
+            </div>
+        </div>
+        <div class="col-md-9">
+            @await Html.PartialAsync("_GenericSiteNav")
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
+

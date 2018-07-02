@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Kontext.Data.Models.Blog>
+
+@{
+    ViewData["Title"] = SharedLocalizer["Manage blogs"];
+    ViewData.AddActivePage(ManageNavPages.ManageBlogs);
+}
+
+@if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ManageBlogs))
+{
+    <a class="btn btn-primary mb-3" asp-action="Create"><i class="fa fa-plus-circle"></i> @SharedLocalizer["Add blog"]</a>
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UniqueName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PostCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Language)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UniqueName)
+                    </td>
+                    <td class="@(item.IsActive.HasValue && item.IsActive.Value?"":"bg-warning")">
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CommentCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Language.LanguageCode)
+                    </td>
+                    <td>
+                        @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ManageBlogs))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.BlogId" class="btn btn-outline-success"><i class="fa fa-edit"></i> @SharedLocalizer["Edit"]</a>
+                        }
+                        @if (User.HasPermissionClaim(BlogApplicationPermissionProvider.ViewBlogs))
+                        {
+                            <a asp-action="Details" asp-route-id="@item.BlogId" class="btn btn-outline-primary"><i class="fa fa-eye"></i> @SharedLocalizer["View"]</a>
+                        }
+                        @*<a asp-action="Delete" asp-route-id="@item.BlogId">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

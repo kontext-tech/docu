@@ -1,0 +1,72 @@
+﻿@model RegisterViewModel
+@using Microsoft.Extensions.Options
+@using Kontext.Services.Captcha
+@{
+    ViewData["Title"] = SharedLocalizer["Register"];
+}
+@inject IOptions<CaptchaOptions> options
+<div class="container bg-light">
+    <h2>@ViewData["Title"]</h2>
+    <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <div class="input-group">
+                <span class="input-group-append"><label class="input-group-text"><i class="fa fa-envelope"></i></label></span>
+                <input asp-for="Email" class="form-control" placeholder="@SharedLocalizer["Email"]" />
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <div class="input-group">
+                <span class="input-group-append"><label class="input-group-text"><i class="fa fa-key"></i></label></span>
+                <input asp-for="Password" class="form-control" placeholder="@SharedLocalizer["Password"]" />
+            </div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword"></label>
+            <div class="input-group">
+                <span class="input-group-append"><label class="input-group-text"><i class="fa fa-key"></i></label></span>
+                <input asp-for="ConfirmPassword" class="form-control" placeholder="@SharedLocalizer["Confirm password"]" />
+            </div>
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Captcha"></label>
+            <div class="input-group">
+                <span class="input-group-append"><label class="input-group-text"><img height="50" src="@options.Value.CaptchaUrl" alt="@SharedLocalizer["Captcha"]" id="validateCode" /></label></span>
+                <input asp-for="Captcha" class="form-control" placeholder="@SharedLocalizer["Captcha"]" id="captchaImage" />
+            </div>
+            <div><a href="javascript:refreshCaptcha('#validateCode','@options.Value.CaptchaUrl');">@SharedLocalizer["Refresh Captcha"]</a></div>
+            <span asp-validation-for="Captcha" class="text-danger"></span>
+        </div>
+        <hr />
+
+        <div class="custom-control custom-checkbox text-muted">
+            <input asp-for="AgreeWithPrivacyPolicy" type="checkbox" class="custom-control-input" />
+            <label class="custom-control-label" asp-for="AgreeWithPrivacyPolicy">
+                <span asp-validation-for="AgreeWithPrivacyPolicy" class="text-danger"></span>
+                @SharedLocalizer["By registering an account, you agree to"] <a asp-action="PrivacyPolicy" target="_blank" asp-area="" asp-controller="Home">@SharedLocalizer["Cookie and Privacy policy"]</a>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" style="width:100%"><i class="fa fa-user-plus"></i>&nbsp;@SharedLocalizer["Register"]</button>
+        </div>
+
+    </form>
+</div>
+<div class="container">
+    <div class="form-group">
+        <p>
+            <a asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]"><i class="fa fa-sign-in"></i>&nbsp;@SharedLocalizer["Log in"]</a>.
+
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

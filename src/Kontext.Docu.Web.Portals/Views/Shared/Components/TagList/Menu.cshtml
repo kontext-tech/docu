@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Tag>
+@{
+    Layout = null;
+    var totalCount = Model.Count();
+}
+
+@if (totalCount > 0)
+{
+    <div class="d-flex flex-wrap">
+        @foreach (var item in Model)
+        {
+            if (!item.IsDeleted && !string.IsNullOrWhiteSpace(item.TagName))
+            {
+                <div class="p-1 m-1 bg-light">
+                    <a class="dropdown-item" asp-area="BlogArea" asp-controller="Tag" asp-action="IndexAsync" asp-route-tagName="@item.TagName">@item.TagName.ToLower()</a>
+                </div>
+            }
+        }
+    </div>
+}

@@ -1,0 +1,72 @@
+﻿@model Kontext.Data.Models.BlogCategory
+
+@{
+    ViewData["Title"] = SharedLocalizer["Create blog category"];
+    ViewData.AddActivePage(ManageNavPages.ManageBlogCategories);
+}
+
+<div class="row">
+    <div class="col-md-8 text-editor-form" data-form-id="#addBlogCateForm" data-te-name="#@Html.IdFor(model => model.Description)">
+        <form asp-action="Create" id="addBlogCateForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UniqueName" class="control-label"></label>
+                <input asp-for="UniqueName" class="form-control" />
+                <span asp-validation-for="UniqueName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LanguageCode" class="control-label"></label>
+                <select asp-for="LanguageCode" class="form-control" asp-items="ViewBag.LanguageCode"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag" class="control-label"></label>
+                <input asp-for="Tag" class="form-control" />
+                <span asp-validation-for="Tag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateModified" class="control-label"></label>
+                <input asp-for="DateModified" class="form-control" />
+                <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogId" class="control-label"></label>
+                <select asp-for="BlogId" class="form-control" asp-items="ViewBag.BlogId"></select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> @SharedLocalizer["Save"]</button>
+                <a class="btn btn-outline-success" asp-action="Index"><i class="fa fa-arrow-circle-left"></i> @SharedHtmlLocalizer["Back to list"]</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+
+
+    @await Html.PartialAsync("_HtmlEditorScriptPartial")
+}
+
+

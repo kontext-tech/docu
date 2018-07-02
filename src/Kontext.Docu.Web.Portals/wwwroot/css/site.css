@@ -1,7 +1,21 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    font-family: -apple-system, "Microsoft YaHei UI", BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
+/*Background colors*/
+.bg-lite {
+    border-top: 1.5rem solid #279a40;
+}
+
+.bg-normal {
+    border-top: 0rem solid #007bff;
+}
+
+.border-lite {
+    border-color: #279a40;
+}
+
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -33,3 +47,349 @@
         display: none;
     }
 }
+
+/*hide dropdown icon*/
+.navbar .dropdown-toggle::after {
+    display: none;
+}
+
+/*Affix*/
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 4rem;
+    z-index: 999;
+}
+
+    .sticky:before,
+    .sticky:after {
+        content: '';
+        display: table;
+    }
+/*Table of content */
+#tableOfContent {
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+/*error for jQuery validation*/
+.error {
+    color: red;
+    margin-left: 0;
+    display: inline-block;
+}
+
+/*Tags*/
+
+ul.tagList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li.tagItem {
+    display: inline;
+    line-height: 1.5em;
+    margin-right: 0.2em;
+}
+
+li .level1 {
+    font-size: 0.9em;
+}
+
+li.level2 {
+    font-size: 0.95em;
+}
+
+li.level3 {
+    font-size: 1.0em;
+}
+
+li.level4 {
+    font-size: 1.1em;
+}
+
+li.level5 {
+    font-size: 1.2em;
+}
+
+li.level6 {
+    font-size: 1.3em;
+}
+
+li.level7 {
+    font-size: 1.4em;
+}
+
+li.level8 {
+    font-size: 1.5em;
+}
+
+/*Blockcode*/
+blockquote, pre {
+    white-space: pre;
+    display: block;
+    /*border-left: 1rem solid rgba(209, 236, 241, 0.85) !important;*/
+    padding: 1rem;
+    font-size: 0.8rem;
+    background-color: #EEEEEE;
+    font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+    /*pre::before {
+        font-family: FontAwesome;
+        content: "\f121  Code";
+        display: block;
+        color:#343a40;
+        background-color: #007bff !important;
+        padding-right: 3px;
+        vertical-align: middle;
+    }*/
+
+    pre .csharpcode .kwrd {
+        color: Highlight;
+        font-weight: bold;
+    }
+
+    pre .csharpcode .str {
+        color: orange;
+        font-weight: bold;
+    }
+
+/*Side bar in the post content page*/
+.side-bar {
+    height: auto;
+}
+
+/*Mega menu*/
+@media screen and (min-width: 768px) {
+
+    .megamenu ul {
+        padding-bottom: 15px;
+        text-align: center;
+    }
+
+    .megamenu > .dropdown-menu {
+        min-width: 800px;
+    }
+}
+
+.dropdown-md > .dropdown-menu {
+    min-width: 450px;
+}
+
+.dropdown-lg > .dropdown-menu {
+    min-width: 900px;
+}
+
+.megamenu .dropdown-item {
+    font-size: 0.8em;
+    overflow-x: hidden;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px !important;
+}
+
+    .btn-circle.btn-lg {
+        width: 50px;
+        height: 50px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 25px !important;
+    }
+
+    .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        font-size: 24px;
+        line-height: 1.33;
+        border-radius: 35px !important;
+    }
+
+/*Table of content*/
+body {
+    position: relative;
+}
+
+#tableOfContent a {
+    color: gray
+}
+
+#tableOfContent nav ul li {
+    padding-bottom: 0.5rem;
+    list-style-type: none;
+    list-style-position: unset;
+    font-size: 1.0rem;
+}
+
+    #tableOfContent nav ul li ul li {
+        padding-bottom: 0.5rem;
+        list-style-type: circle;
+        font-size: 0.8rem;
+    }
+
+        #tableOfContent nav ul li ul li ul li {
+            padding-bottom: 0.5rem;
+            list-style-type: none;
+            font-size: 0.7rem;
+        }
+
+
+/*New top nav bar*/
+.navbar {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+    .navbar form .form-control {
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .navbar .dropdown-menu {
+        border-radius: 0;
+        margin-top: 0;
+    }
+
+.bg-kontext {
+    /*background-color: #014881 !important;*/
+    background-color: #014881 !important;
+}
+
+.btn-kontext {
+    color: #fff;
+    background-color: #014881;
+    border-color: #014881;
+}
+
+    .btn-kontext:hover {
+        color: #fff;
+        background-color: #012542;
+        border-color: #012542;
+    }
+
+
+* {
+    /*border-radius: 0 !important;*/
+}
+
+/*@supports ((position: -webkit-sticky) or (position: sticky))*/
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index: 1020;
+}
+
+#postContent h1, #postContent h2 {
+    /*border-left: 0.5rem solid #d1ecf1;*/
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    /*font-family: "Playfair Display",Georgia,"Times New Roman",serif;*/
+}
+
+#postContent h3 {
+    /*border-left: 0.5rem solid #d1ecf1;*/
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.2rem;
+    font-weight: 500;
+    font-size: 2rem;
+    /*font-family: "Playfair Display",Georgia,"Times New Roman",serif;*/
+}
+
+#postContent h4 {
+    /*border-left: 0.3rem solid rgba(209, 236, 241, 0.85);*/
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.2rem;
+    /*font-family: "Playfair Display",Georgia,"Times New Roman",serif;*/
+}
+
+#postContent h5 {
+    /*border-left: 0.2rem solid rgba(209, 236, 241, 0.70);*/
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.2rem;
+    /*font-family: "Playfair Display",Georgia,"Times New Roman",serif;*/
+}
+
+.card h4 {
+    /*font-family: "Playfair Display", Georgia, "Times New Roman", serif;*/
+}
+
+/*Link color overrides*/
+.breadcrumb-item, .breadcrumb-item a, .jumbotron .nav-link, .card-subtitle a, .card-title .nav-link {
+    color: #212529 !important;
+}
+
+.jumbotron h2 .nav-link, .jumbotron h1 {
+    color: #f8f9fa !important;
+    /*font-family: "Playfair Display",Georgia,"Times New Roman",serif;*/
+}
+
+.page-link {
+    color: #212529 !important;
+}
+
+.page-item.active .page-link {
+    background-color: #e9ecef !important;
+    color: #212529 !important;
+    border-color: #e9ecef;
+}
+
+#pills-tab .nav-link {
+    color: #212529 !important;
+}
+
+#pills-tab .show, #pills-tab .active, #pills-tab .nav-pills .show {
+    background-color: #364859 !important;
+    color: #f8f9fa !important;
+}
+
+.bg-theme {
+    background-color: #364859
+}
+
+.text-theme {
+    color: #364859
+}
+
+.btn-theme {
+    background-color: #364859
+}
+
+.list-group-item.active {
+    background-color: #279a40;
+    border-color: #279a40
+}
+
+/*Post content*/
+#postContent {
+    font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+}
+
+    #postContent a {
+        text-decoration: underline;
+        color: #212529;
+    }
+    /*Image size*/
+    #postContent img, .card img {
+        max-width: 100% !important;
+        height: auto !important;
+    }

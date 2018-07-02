@@ -1,0 +1,117 @@
+﻿@model Kontext.Data.Models.BlogPost
+
+@{
+    ViewData["Title"] = SharedLocalizer["Edit blog post"];
+    ViewData.AddActivePage(ManageNavPages.ManageBlogPosts);
+}
+
+<div class="row">
+    <div class="col-md-8 text-editor-form" data-form-id="#editBlogPostForm" data-te-name="#@Html.IdFor(model => model.Text)">
+        <form asp-action="Edit" id="editBlogPostForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BlogPostId" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LanguageCode" class="control-label"></label>
+                <select asp-for="LanguageCode" class="form-control" asp-items="ViewBag.LanguageCode"></select>
+                <span asp-validation-for="LanguageCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KeyWords" class="control-label"></label>
+                <input asp-for="KeyWords" class="form-control" />
+                <span asp-validation-for="KeyWords" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Text" class="control-label"></label>
+                <textarea asp-for="Text" class="form-control"></textarea>
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ViewCount" class="control-label"></label>
+                <input asp-for="ViewCount" class="form-control" />
+                <span asp-validation-for="ViewCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CommentCount" class="control-label"></label>
+                <input asp-for="CommentCount" class="form-control" />
+                <span asp-validation-for="CommentCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UniqueName" class="control-label"></label>
+                <input asp-for="UniqueName" class="form-control" />
+                <span asp-validation-for="UniqueName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IpAddress" class="control-label"></label>
+                <input asp-for="IpAddress" class="form-control" />
+                <span asp-validation-for="IpAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag" class="control-label"></label>
+                <input asp-for="Tag" class="form-control" />
+                <span asp-validation-for="Tag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateDeleted" class="control-label"></label>
+                <input asp-for="DateDeleted" class="form-control" />
+                <span asp-validation-for="DateDeleted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateModified" class="control-label"></label>
+                <input asp-for="DateModified" class="form-control" />
+                <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatePublished" class="control-label"></label>
+                <input asp-for="DatePublished" class="form-control" />
+                <span asp-validation-for="DatePublished" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogId" class="control-label"></label>
+                <select asp-for="BlogId" class="form-control" asp-items="ViewBag.BlogId"></select>
+                <span asp-validation-for="BlogId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> @SharedLocalizer["Save"]</button>
+                <a asp-action="Index" class="btn btn-outline-success"><i class="fa fa-arrow-circle-left"></i> @SharedLocalizer["Back to list"]</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+
+
+    @await Html.PartialAsync("_HtmlEditorScriptPartial")
+}

@@ -1,0 +1,115 @@
+﻿@model Kontext.Data.Models.Blog
+
+@{
+    ViewData["Title"] = SharedLocalizer["Edit blog"];
+    ViewData.AddActivePage(ManageNavPages.ManageBlogs);
+}
+
+<div class="row">
+    <div class="col-md-8 text-editor-form" data-form-id="#editBlogForm" data-te-name="#@Html.IdFor(model => model.SubTitle)">
+        <form asp-action="Edit" id="editBlogForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BlogId" />
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BlogGroupId" class="control-label"></label>
+                <input asp-for="BlogGroupId" class="form-control" />
+                <span asp-validation-for="BlogGroupId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubTitle" class="control-label"></label>
+                <textarea asp-for="SubTitle" class="form-control"></textarea>
+                <span asp-validation-for="SubTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UniqueName" class="control-label"></label>
+                <input asp-for="UniqueName" class="form-control" />
+                <span asp-validation-for="UniqueName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsActive" class="control-label"></label>
+                <input asp-for="IsActive" class="form-control" />
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LanguageCode" class="control-label"></label>
+                <select asp-for="LanguageCode" class="form-control" asp-items="ViewBag.LanguageCode"></select>
+                <span asp-validation-for="LanguageCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SkinCssFile" class="control-label"></label>
+                <input asp-for="SkinCssFile" class="form-control" />
+                <span asp-validation-for="SkinCssFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondaryCss" class="control-label"></label>
+                <input asp-for="SecondaryCss" class="form-control" />
+                <span asp-validation-for="SecondaryCss" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostCount" class="control-label"></label>
+                <input asp-for="PostCount" class="form-control" />
+                <span asp-validation-for="PostCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CommentCount" class="control-label"></label>
+                <input asp-for="CommentCount" class="form-control" />
+                <span asp-validation-for="CommentCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileCount" class="control-label"></label>
+                <input asp-for="FileCount" class="form-control" />
+                <span asp-validation-for="FileCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PingTrackCount" class="control-label"></label>
+                <input asp-for="PingTrackCount" class="form-control" />
+                <span asp-validation-for="PingTrackCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="News" class="control-label"></label>
+                <input asp-for="News" class="form-control" />
+                <span asp-validation-for="News" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrackingCode" class="control-label"></label>
+                <input asp-for="TrackingCode" class="form-control" />
+                <span asp-validation-for="TrackingCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag" class="control-label"></label>
+                <input asp-for="Tag" class="form-control" />
+                <span asp-validation-for="Tag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateModified" class="control-label"></label>
+                <input asp-for="DateModified" class="form-control" />
+                <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> @SharedLocalizer["Save"]</button>
+                <a asp-action="Index" class="btn btn-outline-success"><i class="fa fa-arrow-circle-left"></i> @SharedLocalizer["Back to list"]</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+
+
+    @await Html.PartialAsync("_HtmlEditorScriptPartial")
+}

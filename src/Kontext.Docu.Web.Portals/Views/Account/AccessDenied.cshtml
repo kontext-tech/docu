@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = SharedLocalizer["Access denied"];
+}
+@await Html.PartialAsync("_GenericSiteNav")
+<div class="container">
+    <header>
+        <h2 class="text-danger"><i class="fa fa-hand-stop-o"></i> @ViewData["Title"]</h2>
+        <p class="text-danger">@SharedHtmlLocalizer["You do not have access to this resource."]</p>
+    </header>
+</div>

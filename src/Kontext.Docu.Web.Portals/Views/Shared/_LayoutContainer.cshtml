@@ -1,0 +1,20 @@
+﻿@using Kontext.Services;
+@inject IConfigService ConfigService
+<!DOCTYPE html>
+<html>
+<head>
+    @await Html.PartialAsync("_HtmlHeaderPartial")
+    @await RenderSectionAsync("HtmlHeadSection", false)
+</head>
+<body>
+    @await Html.PartialAsync("_HtmlSiteNavPartial")
+    <div class="container body-content">
+        @RenderBody()
+        @await Html.PartialAsync("_HtmlSiteFooterPartial")
+    </div>
+
+    @await Html.PartialAsync("_HtmlScriptPartial")
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

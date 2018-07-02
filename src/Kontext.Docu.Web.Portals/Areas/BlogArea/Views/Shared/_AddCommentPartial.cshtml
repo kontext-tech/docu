@@ -1,0 +1,122 @@
+﻿@model BlogPostCommentViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery af
+
+@{
+    var isSignedIn = false;
+    ApplicationUser user = null;
+    if (SignInManager.IsSignedIn(User))
+    {
+        isSignedIn = true;
+        user = await UserManager.GetUserAsync(User);
+    }
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
+@if (!isSignedIn)
+{
+    <div class="alert alert-warning">
+        <i class="fa fa-warning"></i>
+        @SharedHtmlLocalizer["Please login first to add comments."] <a class="btn btn-outline-primary" asp-area="" asp-controller="Account" asp-action="Login" asp-route-ReturnUrl="@returnUrl"><i class="fa fa-sign-in"></i>&nbsp;@SharedHtmlLocalizer["Log in"]</a>
+        @SharedLocalizer["New user?"] <a class="btn btn-success" asp-area="" asp-controller="Account" asp-action="Register" target="_blank"><i class="fa fa-user-plus"></i>&nbsp;@SharedHtmlLocalizer["Register"]</a>
+    </div>
+}
+else if (user != null && !user.IsEnabled)
+{
+    @await Html.PartialAsync("_AccountDisabled")
+}
+else
+{
+    <div class="text-editor-form" data-form-id="#addBlogPostCommentForm" data-te-name="#commentInputArea" data-submit-btn="#addBlogPostCommentButton" data-succeed-modal="#modelAddCommentSucceed" data-fail-modal="#modelAddCommentFailed" data-fail-msg-name="#failedMsg" data-progress-modal="#modelAddCommentInProgress">
+        <form method="post" enctype="multipart/form-data" id="addBlogPostCommentForm" asp-area="BlogArea" asp-controller="BlogPostComment" asp-action="AddCommentAsync">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input hidden readonly asp-for="BlogPostId" />
+            <input hidden readonly asp-for="BlogId" />
+            <input hidden readonly data-clear="true" asp-for="ReplyToBlogPostCommentId" id="ReplyToBlogPostCommentId" />
+            <input hidden readonly id="requestToken" value="@af.GetTokens(this.Context).RequestToken" />
+            <input hidden readonly id="requestTokenName" value="@af.GetTokens(this.Context).HeaderName" />
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-append"><label class="input-group-text"><i class="fa fa-key"></i></label></span>
+                    <input asp-for="Title" class="form-control" placeholder="@SharedLocalizer["Title"]" />
+                </div>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <textarea asp-for="Text" id="commentInputArea" class="form-control" placeholder="@SharedLocalizer["Comments"]"></textarea>
+                <span asp-validation-for="Text" class="text-danger"></span>
+
+            </div>
+            <div class="m-2 custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" asp-for="AgreeWithPrivacyPolicy" />
+
+                <span asp-validation-for="AgreeWithPrivacyPolicy" class="text-danger"></span>
+                <label asp-for="AgreeWithPrivacyPolicy" class="custom-control-label">
+                    @SharedLocalizer["By adding a comment, you agree to"] <a asp-action="PrivacyPolicy" asp-area="" target="_blank" asp-controller="Home">@SharedLocalizer["Cookie and Privacy policy"]</a>
+                </label>
+
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-success btn-lg" id="addBlogPostCommentButton"><i class="fa fa-comment-o"></i>&nbsp;@SharedLocalizer["Add comment"]</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modelAddCommentSucceed" tabindex="-1" role="dialog" aria-labelledby="modelAddCommentSucceedLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title" id="modelAddCommentSucceedLabel">@SharedHtmlLocalizer["Add comment succeed!"]</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <i class="fa fa-2x fa-check text-success"></i> @SharedHtmlLocalizer["Comment is added successfully!"] <br /><span class="text-muted">@SharedHtmlLocalizer["Your comment will show up once the page is refreshed."]</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@SharedLocalizer["Close"]</button>
+                    <button type="button" class="btn btn-primary" onclick="refreshPage" data-dismiss="modal"><i class="fa fa-refresh"></i> @SharedLocalizer["Refresh"]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modelAddCommentFailed" tabindex="-1" role="dialog" aria-labelledby="modelAddCommentFailedLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title" id="modelAddCommentFailedLabel">@SharedHtmlLocalizer["Add comment failed!"]</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <i class="fa fa-2x fa-close text-danger"></i> @SharedHtmlLocalizer["Error:"]<span id="failedMsg"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">@SharedLocalizer["Close"]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modelAddCommentInProgress" tabindex="-1" role="dialog" aria-labelledby="modelAddCommentInProgressLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title" id="modelAddCommentInProgressLabel">@SharedHtmlLocalizer["Please wait"]</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <i class="text-success fa fa fa-spinner fa-pulse fa-2x fa-fw"></i> @SharedHtmlLocalizer["Action in progress..."]
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,21 @@
+﻿@model string
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+    ViewData["Title"] = SharedLocalizer["Delete personal data"];
+    ViewData.AddActivePage(ManageNavPages.DeletePersonalData);
+}
+@if (!user.IsEnabled)
+{
+    @await Html.PartialAsync("_AccountDisabled")
+}
+else
+{
+    <div class="alert alert-warning">
+        <i class="fa fa-warning"></i> This cannot be revered, so make sure this is what you want. <br />
+        For more details about what happens when you initiate account deletion, please click <a target="_blank" asp-action="PrivacyPolicy" asp-area="" asp-controller="Home" class="text-warning" asp-fragment="acctDeletion">here</a>.
+    </div>
+    <form method="post">
+        <button type="submit" class="btn btn-danger"><i class="fa fa-remove"></i>&nbsp;@SharedLocalizer["Delete"]</button>
+    </form>
+}

@@ -1,0 +1,23 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<div class="nav flex-column nav-pills d-none d-md-block d-lg-block">
+    <a asp-action="Index" class="nav-link @ManageNavPages.IndexNavClass(ViewContext)"><i class="fa fa-user"></i> @SharedLocalizer["Profile"]</a>
+    <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" asp-action="ChangePassword"><i class="fa fa-key"></i> @SharedLocalizer["Change password"]</a>
+    <a class="nav-link @ManageNavPages.MyCommentsClass(ViewContext)" asp-action="MyComments"><i class="fa fa-comments"></i>&nbsp;@SharedLocalizer["My comments"]</a>
+    <a class="nav-link @ManageNavPages.GenericClass(ViewContext,ManageNavPages.DeletePersonalData)" asp-action="DeletePersonalData" asp-controller="Manage"><i class="fa fa-remove"></i>&nbsp;@SharedLocalizer["Delete personal data"]</a>
+    @*@if (hasExternalLogins)
+        {
+            <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext)"><a asp-action="ExternalLogins">External logins</a></li>
+        }*@
+    @*<li class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)"><a asp-action="TwoFactorAuthentication">Two-factor authentication</a></li>*@
+</div>
+
+<div class="nav flex-row nav-pills d-sm-block d-lg-none d-md-none">
+    <a asp-action="Index" class="btn btn-outline-primary @ManageNavPages.IndexNavClass(ViewContext)"><i class="fa fa-user"></i> @SharedLocalizer["Profile"]</a>
+    <a class="btn btn-outline-primary @ManageNavPages.ChangePasswordNavClass(ViewContext)" asp-action="ChangePassword"><i class="fa fa-key"></i> @SharedLocalizer["Change password"]</a>
+    <a class="btn btn-outline-primary @ManageNavPages.MyCommentsClass(ViewContext)" asp-action="MyComments"><i class="fa fa-comments"></i>&nbsp;@SharedLocalizer["My comments"]</a>
+    <a class="btn btn-outline-primary @ManageNavPages.GenericClass(ViewContext,ManageNavPages.DeletePersonalData)" asp-action="DeletePersonalData" asp-controller="Manage"><i class="fa fa-remove"></i>&nbsp;@SharedLocalizer["Delete personal data"]</a>
+</div>

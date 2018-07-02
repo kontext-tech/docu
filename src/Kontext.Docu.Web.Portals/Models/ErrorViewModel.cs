@@ -1,6 +1,6 @@
 using System;
 
-namespace Kontext.Docu.Models
+namespace Kontext.Docu.Web.Portals.Models
 {
     public class ErrorViewModel
     {

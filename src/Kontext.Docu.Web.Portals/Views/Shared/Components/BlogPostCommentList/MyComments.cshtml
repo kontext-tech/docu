@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BlogPostComment>
+@inject IConfigService ConfigService
+
+@foreach (var comment in Model)
+{
+    if (!comment.IsDeleted && comment.Approved)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <a id="@comment.BlogPostCommentId"></a>
+                @*<div class="card-title">@Html.Raw(comment.Title)</div>*@
+                <p class="text-muted small"><i class="fa fa-user"></i> @comment.Author <i class="fa fa-calendar"></i> @comment.DateCreated.ToTimeAgo() @comment.Title</p>
+                <div class="card-text">@Html.Raw(comment.Text)</div>
+                @if (comment.ReplyToBlogPostComment != null)
+                {
+                    <i class="fa fa-quote-left text-primary"></i>
+                    <div class="card m-3">
+                        <div class="card-body font-italic">
+                            @if (!comment.ReplyToBlogPostComment.IsDeleted)
+                            {
+                                <p class="text-muted small"><i class="fa fa-user"></i> @comment.ReplyToBlogPostComment.Author <i class="fa fa-calendar"></i> @comment.ReplyToBlogPostComment.DateCreated.ToTimeAgo()</p>
+                                <div class="card-text small">@Html.Raw(comment.ReplyToBlogPostComment.Text)</div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-danger">
+                                    <i class="fa fa-close"></i> <span>@SharedLocalizer["The comment has been deleted."]</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                <p class="p-1">
+                    <a class="btn btn-outline-primary" asp-area="BlogArea" asp-action="Index" asp-controller="BlogPost" asp-route-blogName="@comment.Blog.UniqueName" asp-route-postName="@comment.BlogPost.UniqueName" asp-fragment="@comment.BlogPostCommentId">@SharedLocalizer["View detail"] <i class="fa fa-angle-double-right"></i></a>
+                    <a class="btn btn-outline-danger" asp-area="" asp-action="DeleteComment" asp-controller="Manage" asp-route-commentId="@comment.BlogPostCommentId" asp-route-page="@(Context.Request.Query["page"])">@SharedLocalizer["Delete"] <i class="fa fa-close"></i></a>
+                </p>
+            </div>
+        </div>
+    }
+}
+
+

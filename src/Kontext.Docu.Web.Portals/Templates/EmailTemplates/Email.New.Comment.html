@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{siteUrl}/css/site.min.css" />
+</head>
+<body>
+    <h2>New comment notification</h2>
+    <p>Hi <b>{userName}</b></p>
+    <p>
+        Please click the link to view the comment online: <a class="btn btn-primary" href='{link}'>{title}</a>
+    </p>
+    <p class="card">
+        <div class="card-body">
+            <h6 class="lead text-muted">Commented by <b>{commentUser}</b>:</h6>
+            <hr />
+            {commentContent}
+        </div>
+    </p>
+
+</body>
+</html>

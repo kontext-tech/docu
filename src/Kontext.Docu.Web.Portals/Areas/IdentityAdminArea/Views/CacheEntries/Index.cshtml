@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CachedEntry>
+
+@{
+    ViewData["Title"] = SharedLocalizer["Manage cache"];
+    ViewData.AddActivePage(ManageNavPages.ManageCache);
+}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().CacheKey)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().AddedDateTime)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CacheKey)
+                    </td>
+                    <td>
+                        @item.AddedDateTime.ToTimeAgo()
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-danger" asp-action="RefreshEntry" asp-route-id="@item.CacheKey"><i class="fa fa-remove"></i> @SharedLocalizer["Remove"]</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

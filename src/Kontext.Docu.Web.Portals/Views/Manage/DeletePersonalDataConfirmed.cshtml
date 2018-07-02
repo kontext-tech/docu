@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = SharedLocalizer["Delete personal data"];
+    ViewData.AddActivePage(ManageNavPages.DeletePersonalData);
+}
+@if (ViewData.ContainsKey("StatusMessage"))
+{
+    @Html.Partial("_StatusMessage", ViewData["StatusMessage"])
+}
+else
+{
+    <div class="alert alert-danger alert-dismissible">
+        @SharedLocalizer["Error: Please contact system administrtor!"]
+    </div>
+}

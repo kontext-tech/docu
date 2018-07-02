@@ -1,0 +1,13 @@
+﻿@model IEnumerable<BlogPost>
+@{
+    Layout = null;
+}
+<!--List of blogs-->
+<div class="d-flex row justify-content-around">
+    @foreach (var post in Model)
+    {
+        <div class="col-sm-6">
+            @await Html.PartialAsync("_BlogPostDetailPartial", post)
+        </div>
+    }
+</div>

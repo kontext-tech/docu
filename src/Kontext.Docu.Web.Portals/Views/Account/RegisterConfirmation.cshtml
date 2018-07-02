@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = SharedLocalizer["Register confirmation"];
+}
+
+
+<div class="container bg-light">
+    <h2>@ViewData["Title"]</h2>
+    <p>
+        <i class="fa fa-2x fa-check-circle text-success"></i> @SharedHtmlLocalizer["A confirmation message has been sent to your email; please verify your email address from that email before you can login."]
+        <br />
+        @SharedHtmlLocalizer["Please check junk mailbox if you have not received the activation email in your inbox. You will need to click registration link in the email to finish your registration."]
+        <br /><a asp-action="Index" asp-controller="Home" asp-area="">@SharedHtmlLocalizer["Home"] </a>
+    </p>
+</div>

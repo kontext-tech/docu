@@ -1,0 +1,63 @@
+﻿@model RoleViewModel
+@{
+    ViewData["Title"] = SharedLocalizer[$"Edit role"];
+    ViewData.AddActivePage(ManageNavPages.ManageRoles);
+}
+@inject IApplicationPermissionProvider permissionProvider;
+<div class="col-8">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <hr />
+        <div class="form-group row">
+            <label class="control-label col-md-2">@SharedLocalizer["Permissions"]:</label>
+        </div>
+
+        <div class="row">
+            @foreach (var permissionGroup in permissionProvider.AllPermissions.GroupBy(p => p.GroupName))
+            {
+
+                <div class="form-group col-sm-6">
+                    <label class="col-md-5 control-label" for="checkboxes">@permissionGroup.Key</label>
+                    <div class="col-md-7">
+                        <div class="checkbox" *ngFor="let permission of permissionGroup.value">
+                            @foreach (var permission in permissionGroup)
+                            {
+                                <label data-toggle="tooltip" data-placement="top" title="@permission.Description" for="permission-@permission.Value">
+                                    @if (Model.Permissions.Any(p => p.Value.CompareTo(permission.Value) == 0))
+                                    {
+                                        <input name="permissions" id="permission-@permission.Value" type="checkbox" value="@permission.Value" checked>
+                                    }
+                                    else
+                                    {
+                                        <input name="permissions" id="permission-@permission.Value" type="checkbox" value="@permission.Value">
+
+                                    }
+                                    @permission.Name
+                                </label>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> @SharedLocalizer["Save"]</button>
+            <a class="btn btn-outline-success" asp-action="List"><i class="fa fa-arrow-circle-left"></i> @SharedHtmlLocalizer["Back to list"]</a>
+        </div>
+    </form>
+
+</div>

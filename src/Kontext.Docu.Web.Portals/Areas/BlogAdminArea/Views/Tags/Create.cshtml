@@ -1,0 +1,56 @@
+﻿@model Kontext.Data.Models.Tag
+
+@{
+    ViewData["Title"] = SharedLocalizer["Create tag"];
+    ViewData.AddActivePage(ManageNavPages.ManageTags);
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TagName" class="control-label"></label>
+                <input asp-for="TagName" class="form-control" />
+                <span asp-validation-for="TagName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LanguageCode" class="control-label"></label>
+                <select asp-for="LanguageCode" class="form-control" asp-items="ViewBag.LanguageCode">
+                    <option value=""> - </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NTile" class="control-label"></label>
+                <input asp-for="NTile" class="form-control" />
+                <span asp-validation-for="NTile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateDeleted" class="control-label"></label>
+                <input asp-for="DateDeleted" class="form-control" />
+                <span asp-validation-for="DateDeleted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateModified" class="control-label"></label>
+                <input asp-for="DateModified" class="form-control" />
+                <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> @SharedLocalizer["Save"]</button>
+                <a class="btn btn-outline-success" asp-action="Index"><i class="fa fa-arrow-circle-left"></i> @SharedHtmlLocalizer["Back to list"]</a>
+            </div>
+        </form>
+    </div>
+</div>

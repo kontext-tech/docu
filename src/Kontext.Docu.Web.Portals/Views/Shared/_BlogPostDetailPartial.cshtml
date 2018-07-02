@@ -1,0 +1,33 @@
+﻿@model BlogPost
+<div class="card mb-2 @(Model.Tag != null && Model.Tag == Constants.LiteLogType ? "border-lite bg-light" : "")">
+    <div class="card-body">
+        <h6>
+            @if (Model.Tags != null)
+            {
+                foreach (var tag in Model.Tags)
+                {
+                    <a asp-area="BlogArea" asp-controller="Tag" asp-action="IndexPageAsync" asp-route-tagName="@tag.Tag?.TagName" asp-route-page="1">
+                        <strong class="d-inline-block badge badge-success"><i class="fa fa-tag"></i> @tag.Tag?.TagName.ToLower()</strong>
+                    </a>
+                }
+            }
+        </h6>
+        <h4 class="card-title">
+            <a asp-area="BlogArea" asp-action="Index" asp-controller="BlogPost" asp-route-blogName="@Model.Blog.UniqueName" asp-route-postName="@Model.UniqueName" class="text-dark">@Html.Raw(Model.Title)</a>
+        </h4>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <i class="fa fa-eye"></i>  @string.Format(SharedHtmlLocalizer["{0} views"].Value, @Model.ViewCount) &nbsp;<i class="fa fa-comments"></i> @string.Format(SharedHtmlLocalizer["{0} comments"].Value, Model.CommentCount) <i class="fa fa-calendar"></i> @SharedLocalizer["last modified"] @Model.DatePublished.Value.ToTimeAgo()
+        </h6>
+        <p class="card-text">
+            @if (string.IsNullOrWhiteSpace(Model.Description) && Model.Text != null)
+            {
+                @Model.Text.ToPageDescription()
+            }
+            else
+            {
+                @Html.Raw(Model.Description)
+            }
+        </p>
+        <a class="btn btn-outline-primary" asp-area="BlogArea" asp-action="Index" asp-controller="BlogPost" asp-route-blogName="@Model.Blog.UniqueName" asp-route-postName="@Model.UniqueName">@SharedLocalizer["View detail"] <i class="fa fa-angle-double-right"></i> </a>
+    </div>
+</div>
