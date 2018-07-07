@@ -9,7 +9,7 @@
 
     <div class="btn-group btn-group-lg nav nav-pills justify-content-center mb-3 sticky-top" role="tablist" id="pills-tab">
         <a class="btn btn-secondary active" id="pills-latestposts-tab" href="#pills-latestposts" role="tab" data-toggle="pill" aria-controls="pills-dropdown1"><i class="fa fa-list text-success"></i> @SharedLocalizer["Latest posts"] <span class="badge badge-success">@ConfigService.BlogConfig.HomePageBlogLatestPostCount</span></a>
-        <a class="btn btn-secondary" id="pills-hotestposts-tab" href="#pills-hotestposts" role="tab" data-toggle="pill" aria-controls="pills-dropdown2"><i class="fa fa-fire text-warning"></i> @SharedLocalizer["Hottest posts"] <span class="badge badge-warning">@ConfigService.BlogConfig.HomePageBlogLatestPostCount</span></a>
+        <a class="btn btn-secondary" id="pills-hotestposts-tab" href="#pills-hotestposts" role="tab" data-toggle="pill" aria-controls="pills-dropdown2"><i class="fa fa-fire text-warning"></i> @SharedLocalizer["Most-viewed posts"] <span class="badge badge-warning">@ConfigService.BlogConfig.HomePageBlogLatestPostCount</span></a>
         <a class="btn btn-secondary" id="pills-comments-tab" data-toggle="pill" href="#pills-comments" role="tab" aria-controls="pills-home" aria-expanded="true"><i class="fa fa-comments"></i> @SharedLocalizer["Latest comments"] <span class="badge badge-secondary">@ConfigService.BlogConfig.HomePageBlogLatestCommentCount</span></a>
         <a class="btn btn-secondary" href="@Url.RssLink(Context.Request.Scheme)" target="_blank">
             <i class="fa fa-rss-square"></i> RSS
