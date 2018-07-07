@@ -10,14 +10,16 @@ namespace Kontext.Services
         private readonly IOptions<SecurityConfig> securityConfig;
         private readonly IOptions<BlogConfig> blogConfig;
         private readonly IOptions<EmailTemplatesConfig> emailTemplatesConfig;
+        private readonly IOptions<DatabaseConfig> databaseConfig;
 
-        public ConfigurationService(IOptions<SiteConfig> siteConfig, IOptions<EmailConfig> emailConfig, IOptions<SecurityConfig> securityConfig, IOptions<BlogConfig> blogConfig, IOptions<EmailTemplatesConfig> emailTemplatesConfig)
+        public ConfigurationService(IOptions<SiteConfig> siteConfig, IOptions<EmailConfig> emailConfig, IOptions<SecurityConfig> securityConfig, IOptions<BlogConfig> blogConfig, IOptions<EmailTemplatesConfig> emailTemplatesConfig, IOptions<DatabaseConfig> databaseConfig)
         {
             this.siteConfig = siteConfig;
             this.emailConfig = emailConfig;
             this.securityConfig = securityConfig;
             this.blogConfig = blogConfig;
             this.emailTemplatesConfig = emailTemplatesConfig;
+            this.databaseConfig = databaseConfig;
         }
 
         public ISiteConfig SiteConfig => siteConfig.Value;
@@ -29,5 +31,7 @@ namespace Kontext.Services
         public IEmailConfig EmailConfig => emailConfig.Value;
 
         public IEmailTemplateConfig[] EmailTemplates => emailTemplatesConfig.Value.EmailTemplates;
+
+        public IDatabaseConfig DatabaseConfig => databaseConfig.Value;
     }
 }

@@ -13,5 +13,7 @@ namespace Kontext.Services
         IEmailConfig EmailConfig { get; }
 
         IEmailTemplateConfig[] EmailTemplates { get; }
+
+        IDatabaseConfig DatabaseConfig { get; }
     }
 }
