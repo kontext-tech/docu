@@ -964,7 +964,7 @@
     <value>验证码错误，请重新输入。</value>
   </data>
   <data name="Captcha" xml:space="preserve">
-    <value>验证码 (填写等式答案)</value>
+    <value>验证码</value>
   </data>
   <data name="Captcha code is expired, please refresh the code." xml:space="preserve">
     <value>验证码已失效，请刷新验证码。</value>
