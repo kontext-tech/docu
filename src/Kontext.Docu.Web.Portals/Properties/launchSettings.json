@@ -20,6 +20,14 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
+    "Kontext.Docu.Web.Portals-SQLServer": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "DevSQLServer"
+      },
+      "applicationUrl": "http://localhost:6570/"
+    },
     "Kontext.Docu.Web.Portals": {
       "commandName": "IIS",
       "launchBrowser": true,

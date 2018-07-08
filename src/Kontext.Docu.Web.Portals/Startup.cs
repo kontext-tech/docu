@@ -107,18 +107,25 @@ namespace Kontext.Docu.Web.Portals
 
             var sp = services.BuildServiceProvider();
             var dbConfig = sp.GetService<IOptions<DatabaseConfig>>().Value;
+            // Replace connection string tokens
+            var connStrCore = Configuration.GetConnectionString(Constants.KontextCoreConnectionName);
+            var connStrDocu = Configuration.GetConnectionString(Constants.KontextDocuConnectionName);
+            if (connStrCore.Contains(Constants.ContentRootPathToken))
+                connStrCore = connStrCore.Replace(Constants.ContentRootPathToken, Env.ContentRootPath);
+            if (connStrDocu.Contains(Constants.ContentRootPathToken))
+                connStrDocu = connStrDocu.Replace(Constants.ContentRootPathToken, Env.ContentRootPath);
 
             // Add database context
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 if (dbConfig.CoreDbType == DatabaseType.SQLite)
                 {
-                    options.UseSqlite(Configuration.GetConnectionString(Constants.KontextCoreConnectionName),
+                    options.UseSqlite(connStrCore,
                         b => b.MigrationsAssembly("Kontext.Docu.Web.Portals"));
                 }
                 else
                 {
-                    options.UseSqlServer(Configuration.GetConnectionString(Constants.KontextCoreConnectionName),
+                    options.UseSqlServer(connStrDocu,
                         b => b.MigrationsAssembly("Kontext.Docu.Web.Portals"));
                 }
                 // Register context data models.
@@ -130,12 +137,12 @@ namespace Kontext.Docu.Web.Portals
             {
                 if (dbConfig.DocuDbType == DatabaseType.SQLite)
                 {
-                    options.UseSqlite(Configuration.GetConnectionString(Constants.KontextDocuConnectionName),
+                    options.UseSqlite(connStrDocu,
                         b => b.MigrationsAssembly("Kontext.Docu.Web.Portals"));
                 }
                 else
                 {
-                    options.UseSqlServer(Configuration.GetConnectionString(Constants.KontextDocuConnectionName),
+                    options.UseSqlServer(connStrDocu,
                         b => b.MigrationsAssembly("Kontext.Docu.Web.Portals"));
                 }
                 // Register context blog data models.

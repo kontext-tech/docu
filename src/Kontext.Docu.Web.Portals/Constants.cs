@@ -15,5 +15,6 @@
         public readonly static string CookieNameForAcceptedKey = "DocuKCPA";
         public readonly static string KontextCoreConnectionName = "KontextCoreConnection";
         public readonly static string KontextDocuConnectionName = "KontextDocuConnection";
+        public readonly static string ContentRootPathToken = "%CONTENTROOTPATH%";
     }
 }
