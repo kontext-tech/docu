@@ -52,6 +52,7 @@ namespace Kontext.Docu.Web.Portals
             services.Configure<EmailConfig>(Configuration.GetSection("ContextConfig:EmailConfig"));
             services.Configure<EmailTemplatesConfig>(Configuration.GetSection("ContextConfig:Templates"));
             services.Configure<SecurityConfig>(Configuration.GetSection("ContextConfig:SecurityConfig"));
+            services.Configure<DatabaseConfig>(Configuration.GetSection("ContextConfig:DatabaseConfig"));
             // Configure XmlRpc
             services.Configure<XmlRpcOptions>(Configuration.GetSection("XmlRpc"));
             services.AddSingleton(Configuration);
@@ -104,11 +105,29 @@ namespace Kontext.Docu.Web.Portals
 
             });
 
+            var sp = services.BuildServiceProvider();
+            var dbConfig = sp.GetService<IOptions<DatabaseConfig>>().Value;
+            // Replace connection string tokens
+            var connStrCore = Configuration.GetConnectionString(Constants.KontextCoreConnectionName);
+            var connStrDocu = Configuration.GetConnectionString(Constants.KontextDocuConnectionName);
+            if (connStrCore.Contains(Constants.ContentRootPathToken))
+                connStrCore = connStrCore.Replace(Constants.ContentRootPathToken, Env.ContentRootPath);
+            if (connStrDocu.Contains(Constants.ContentRootPathToken))
+                connStrDocu = connStrDocu.Replace(Constants.ContentRootPathToken, Env.ContentRootPath);
+
             // Add database context
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"),
-                    b => b.MigrationsAssembly("Kontext.Docu.Web.Portals"));
+                if (dbConfig.CoreDbType == DatabaseType.SQLite)
+                {
+                    options.UseSqlite(connStrCore,
+                        b => b.MigrationsAssembly("Kontext.Docu.Web.Portals"));
+                }
+                else
+                {
+                    options.UseSqlServer(connStrDocu,
+                        b => b.MigrationsAssembly("Kontext.Docu.Web.Portals"));
+                }
                 // Register context data models.
                 options.UseContextProjectShared();
             });
@@ -116,8 +135,16 @@ namespace Kontext.Docu.Web.Portals
             // Context blog database context
             services.AddDbContext<ContextBlogDbContext>(options =>
             {
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"),
-                    b => b.MigrationsAssembly("Kontext.Docu.Web.Portals"));
+                if (dbConfig.DocuDbType == DatabaseType.SQLite)
+                {
+                    options.UseSqlite(connStrDocu,
+                        b => b.MigrationsAssembly("Kontext.Docu.Web.Portals"));
+                }
+                else
+                {
+                    options.UseSqlServer(connStrDocu,
+                        b => b.MigrationsAssembly("Kontext.Docu.Web.Portals"));
+                }
                 // Register context blog data models.
                 options.UseContextBlogModels();
             });

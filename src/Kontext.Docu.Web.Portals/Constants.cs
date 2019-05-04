@@ -13,5 +13,8 @@
         public readonly static string PageKeywordsViewDataKey = "Keywords";
         public readonly static string PageDescriptionViewDataKey = "Description";
         public readonly static string CookieNameForAcceptedKey = "DocuKCPA";
+        public readonly static string KontextCoreConnectionName = "KontextCoreConnection";
+        public readonly static string KontextDocuConnectionName = "KontextDocuConnection";
+        public readonly static string ContentRootPathToken = "%CONTENTROOTPATH%";
     }
 }

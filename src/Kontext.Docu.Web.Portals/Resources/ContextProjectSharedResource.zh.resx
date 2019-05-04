@@ -921,7 +921,7 @@
   <data name="Contacts" xml:space="preserve">
     <value>联系方式</value>
   </data>
-  <data name="Hottest posts" xml:space="preserve">
+  <data name="Most-viewed posts" xml:space="preserve">
     <value>热门文章</value>
   </data>
   <data name="In this page" xml:space="preserve">
@@ -964,7 +964,7 @@
     <value>验证码错误，请重新输入。</value>
   </data>
   <data name="Captcha" xml:space="preserve">
-    <value>验证码 (填写等式答案)</value>
+    <value>验证码</value>
   </data>
   <data name="Captcha code is expired, please refresh the code." xml:space="preserve">
     <value>验证码已失效，请刷新验证码。</value>

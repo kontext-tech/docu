@@ -69,7 +69,6 @@
     <Folder Include="Areas\BlogArea\Views\Tag\" />
     <Folder Include="Areas\IdentityAdminArea\Data\" />
     <Folder Include="Areas\IdentityAdminArea\Models\" />
-    <Folder Include="App_Data\" />
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\images\uploaded\" />
   </ItemGroup>
